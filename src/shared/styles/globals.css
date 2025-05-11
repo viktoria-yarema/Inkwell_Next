@@ -3,13 +3,13 @@
 
 @layer base {
   :root {
-    --primary-yellow: hsl(47, 100%, 67%);
+    --primary-yellow: #ff930f;
     --light-yellow: hsl(48, 100%, 88%);
-    --primary-blue: hsl(206, 89%, 77%);
-    --light-blue: hsl(202, 100%, 94%);
+    --primary-blue: #8AB9F1;
+    --light-blue: #DCECFF;
     --soft-grey: hsl(220, 20%, 97%);
   
-    --background: var(--soft-grey);
+    --background: #fff;
     --foreground: hsl(224, 71%, 4%);
   
     --card: hsl(0, 0%, 100%);

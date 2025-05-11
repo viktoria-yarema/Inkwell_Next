@@ -13,6 +13,7 @@ const nunito = Nunito({
 })
 
 export const metadata: Metadata = {
+  icons: [{ rel: "icon", url: "/favicon.ico" }],
   title: {
     template: "%s | Growing Minds Kindergarten",
     default: "Growing Minds Kindergarten - Exploring and Growing Together",
@@ -47,7 +48,6 @@ export const metadata: Metadata = {
     images: ["/images/twitter-image.jpg"],
     creator: "@growingminds",
   },
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({

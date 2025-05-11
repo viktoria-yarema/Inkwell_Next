@@ -7,6 +7,7 @@ import { formatDate, generateStructuredData } from "@/shared/utils/utils"
 import NewsletterForm from "@/shared/components/newsletter-form"
 import { getArticleById } from "@/entities/articles/api/getArticleById"
 import { getUser } from "@/entities/user/api/getUser"
+import { Metadata } from "next"
 
 interface ArticlePageProps {
   params: {
@@ -14,50 +15,44 @@ interface ArticlePageProps {
   }
 }
 
-// export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
-//   const article = await getArticleById(params.slug)
+export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
+  const article = await getArticleById(params.slug)
 
-//   if (!article) {
-//     return {
-//       title: "Article Not Found",
-//     }
-//   }
+  if (!article) {
+    return {
+      title: "Article Not Found",
+    }
+  }
 
-//   // TODO: add description to article and cover image
-//   return {
-//     title: article.title,
-//     // description: article.description,
-//     openGraph: {
-//       title: article.title,
-//       // description: article.excerpt,
-//       type: "article",
-//       // publishedTime: article.publishedAt,
-//       // modifiedTime: article.updatedAt,
-//       images: [
-//         {
-//           url: article.coverImage ?? "/placeholder.svg",
-//           width: 1200,
-//           height: 630,
-//           alt: article.title,
-//         },
-//       ],
-//     },
-//   }
-// }
+  // TODO: add description to article and cover image
+  return {
+    title: article.title,
+    // description: article.description,
+    openGraph: {
+      title: article.title,
+      // description: article.excerpt,
+      type: "article",
+      // publishedTime: article.publishedAt,
+      // modifiedTime: article.updatedAt,
+      images: [
+        {
+          url: article.coverImage ?? "/placeholder.svg",
+          width: 1200,
+          height: 630,
+          alt: article.title,
+        },
+      ],
+    },
+  }
+}
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
-  
-
   const [article, author] = await Promise.all([getArticleById(params.slug), getUser()])
 
   if (!article) {
     notFound()
   }
 
-  // Get related articles (excluding current article)
-  // const relatedArticles = (await getLatestArticles(4)).filter((a) => a.id !== article.id).slice(0, 3)
-
-  // Generate structured data for SEO
   const structuredData = generateStructuredData("article", article)
 
   return (
@@ -86,14 +81,14 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             </Link>
 
             <div className="max-w-3xl mx-auto text-center">
-              <div className="inline-block bg-primary-yellow/90 text-white text-sm font-medium px-4 py-1 rounded-full mb-4">
+              {/* <div className="inline-block bg-primary-yellow/90 text-white text-sm font-medium px-4 py-1 rounded-full mb-4">
                 {article.category}
-              </div>
+              </div> */}
               <h1 className="text-3xl md:text-5xl font-bold mb-4">{article.title}</h1>
               <div className="flex items-center justify-center gap-2 text-gray-600 mb-6">
-                <time dateTime={article.publishedAt}>{formatDate(article.publishedAt)}</time>
+                {/* <time dateTime={article.publishedAt}>{formatDate(new Date(article.publishedAt).toString())}</time> */}
                 <span className="inline-block w-1 h-1 rounded-full bg-gray-400"></span>
-                <span>By {article.author.name}</span>
+                {/* <span>By {article.author.name}</span> */}
               </div>
             </div>
           </div>
@@ -151,11 +146,6 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             <ArticleCard key={article.id} article={article} />
           ))}
         </div> */}
-      </section>
-
-      {/* Newsletter */}
-      <section className="container-custom pb-16">
-        <NewsletterForm />
       </section>
     </>
   )

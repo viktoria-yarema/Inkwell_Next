@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
 import ArticleCard from "@/shared/components/article-card"
 import Link from "next/link"
-import { Palette, BookOpen, PuzzleIcon as PuzzlePiece, Heart } from "lucide-react"
 import { getArticles } from "@/entities/articles/api/getArticles"
 import { getTags } from "@/entities/tags/api/getTags"
+import { TAG_ICONS } from "@/entities/tags/constants"
 
 export const metadata: Metadata = {
   title: "Articles",
@@ -11,22 +11,16 @@ export const metadata: Metadata = {
     "Browse all articles on early childhood education, activities, and resources for kindergarten teachers and parents.",
 }
 
-interface ArticlesPageProps {
+type ArticlesPageProps = {
   searchParams: { category?: string }
 }
 
 export default async function ArticlesPage({ searchParams }: ArticlesPageProps) {
-  // Fetch all articles and categories
-  const [articles, categories] = await Promise.all([getArticles(), getTags()])
-
-  // Filter articles by category if provided in search params
-  const filteredArticles = searchParams.category
-    ? articles.filter((article) => article.category.toLowerCase().replace(/\s+/g, "-") === searchParams.category)
-    : articles
-
-  // Get the active category name for display
-  const activeCategory = searchParams.category
-    ? categories.find((cat) => cat.slug === searchParams.category)?.name
+  const [articles, categories] = await Promise.all([getArticles({ page: 1, limit: 10}), getTags()])
+  
+  console.log(articles, "articles")
+  const activeCategory = searchParams?.category
+    ? categories.find((cat) => cat.id === searchParams.category)?.title
     : null
 
   return (
@@ -41,8 +35,6 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
             : "Browse our collection of articles on early childhood education, activities, and resources."}
         </p>
       </div>
-
-      {/* Category Filter */}
       <div className="mb-10">
         <div className="flex flex-wrap justify-center gap-3">
           <Link
@@ -53,31 +45,27 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
           >
             All
           </Link>
-
-          {categories.map((category) => (
+          {categories.map((category) => {
+            const Icon= TAG_ICONS[category.icon]?.Icon
+            return(
             <Link
               key={category.id}
-              href={`/articles?category=${category.slug}`}
+              href={`/articles?category=${category.id}`}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors flex items-center gap-1 ${
-                searchParams.category === category.slug
+                searchParams.category === category.id
                   ? "bg-primary-yellow text-white"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
             >
-              {/* {category.icon === "palette" && <Palette size={14} />}
-              {category.icon === "book-open" && <BookOpen size={14} />}
-              {category.icon === "puzzle" && <PuzzlePiece size={14} />}
-              {category.icon === "heart" && <Heart size={14} />}
-              {category.name} */}
+           {Icon && <Icon size={14} />}
+              {category.title.toUpperCase()}
             </Link>
-          ))}
+          )})}
         </div>
       </div>
-
-      {/* Articles Grid */}
-      {filteredArticles.length > 0 ? (
+      {articles.articles?.length > 0 ? (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredArticles.map((article) => (
+          {articles.articles?.map((article) => (
             <ArticleCard key={article.id} article={article} />
           ))}
         </div>

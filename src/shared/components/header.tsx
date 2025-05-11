@@ -4,17 +4,18 @@ import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Menu, X } from "lucide-react"
+import LogoImage from "@/shared/assets/logos/inkwell.svg"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
+    <header className="bg-white/80  sticky top-0 z-50 backdrop-blur-[4px] backdrop-saturate-[100%]  bg-opacity-10 border border-opacity-0 border-[#ffffff]">
       <div className="container-custom py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <div className="relative w-10 h-10 md:w-12 md:h-12">
             <Image
-              src="/placeholder.svg?height=48&width=48"
+              src={LogoImage}
               alt="Growing Minds Logo"
               width={48}
               height={48}

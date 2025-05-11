@@ -17,9 +17,8 @@ export default function NewsletterForm() {
     setIsSubmitting(true)
     setError("")
 
-    // Simulate form submission
     try {
-      // In a real app, this would be an API call to your newsletter service
+
       await new Promise((resolve) => setTimeout(resolve, 1000))
       setIsSuccess(true)
       setEmail("")
@@ -62,9 +61,7 @@ export default function NewsletterForm() {
             </Button>
           </form>
         )}
-
         {error && <div className="text-red-500 mt-2">{error}</div>}
-
         <p className="text-xs text-gray-500 mt-4">We respect your privacy. Unsubscribe at any time.</p>
       </div>
     </div>

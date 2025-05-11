@@ -2,7 +2,6 @@ import Image from "next/image"
 import Link from "next/link"
 import type { Metadata } from "next"
 import ArticleCard from "@/shared/components/article-card"
-import NewsletterForm from "@/shared/components/newsletter-form"
 import CategoryCard from "@/shared/components/category-card"
 import { getUser } from "@/entities/user/api/getUser"
 import { getArticles } from "@/entities/articles/api/getArticles"
@@ -16,14 +15,11 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const user = await getUser();
-  const articles = await getArticles();
+  const articles = await getArticles({ page: 1, limit: 3 });
   const categories = await getTags();
 
-  // TODO: get latest articles from server 
-  const latestArticles = articles.slice(0, 3);
-
   return (
-    <div className="flex flex-col gap-16 md:gap-24 pb-16">
+    <div className="flex flex-col gap-16 md:gap-24 pb-16">  
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-light-yellow to-white pt-12 pb-16 md:pt-20 md:pb-24">
         <div className="container-custom">
@@ -75,7 +71,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Latest Articles Section */}
       <section className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Latest Articles</h2>
@@ -85,7 +80,7 @@ export default async function Home() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {latestArticles.map((article) => (
+          {articles.articles?.map((article) => (
             <ArticleCard key={article.id} article={article} />
           ))}
         </div>
@@ -142,11 +137,6 @@ export default async function Home() {
             <CategoryCard key={category.id} category={category} />
           ))}
         </div>
-      </section>
-
-      {/* Newsletter Section */}
-      <section className="container-custom">
-        <NewsletterForm />
       </section>
     </div>
   )

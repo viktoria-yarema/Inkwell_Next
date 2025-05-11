@@ -5,13 +5,13 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-primary-blue/10 pt-12 pb-6">
+    <footer className="bg-primary-blue/70 pt-12 pb-6 *:hover:text-black">
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
             <h3 className="text-xl font-bold mb-4">Growing Minds</h3>
             <p className="text-gray-600 mb-4">
-              A kindergarten teacher's blog sharing early childhood education insights, activities, and resources.
+              A kindergarten teacher&lsquo;s blog sharing early childhood education insights, activities, and resources.
             </p>
             <div className="flex gap-4">
               <a
@@ -100,7 +100,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-200 pt-6 text-center text-gray-500 text-sm">
+        <div className="border-t border-black/60 pt-6 text-center text-font-secondary text-sm">
           <p>&copy; {currentYear} Growing Minds Kindergarten. All rights reserved.</p>
         </div>
       </div>

@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import Image from "next/image"
-import { Mail, Twitter, Linkedin } from "lucide-react"
-import NewsletterForm from "@/shared/components/newsletter-form"
+import { Mail, } from "lucide-react"
 import { getUser } from "@/entities/user/api/getUser"
 import { generateStructuredData } from "@/shared/utils/utils"
 
@@ -19,19 +18,19 @@ export default async function AboutPage() {
 
   return (
     <>
-      {/* Add structured data */}
+  
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
 
       <div className="flex flex-col gap-16 pb-16">
         {/* Hero Section */}
-        <section className="bg-light-blue/30 pt-12 pb-16">
+        <section className=" pt-12 pb-16">
           <div className="container-custom">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-4">About the Teacher</h1>
                 <p className="text-lg text-gray-700 mb-6">{teacherInfo.bio}</p>
                 <div className="flex gap-4">
-                  {teacherInfo.socialLinks.twitter && (
+                  {/* {teacherInfo.socialLinks.twitter && (
                     <a
                       href={teacherInfo.socialLinks.twitter}
                       target="_blank"
@@ -61,18 +60,18 @@ export default async function AboutPage() {
                     >
                       <Mail size={20} />
                     </a>
-                  )}
+                  )} */}
                 </div>
               </div>
               <div className="relative">
                 <div className="relative h-[300px] md:h-[400px] w-full">
-                  <Image
+                  {/* <Image
                     src={teacherInfo.avatar || "/placeholder.svg"}
                     alt={teacherInfo.name}
                     fill
                     className="object-cover rounded-2xl"
                     priority
-                  />
+                  /> */}
                 </div>
                 <div className="absolute -bottom-6 -right-6 bg-white p-3 rounded-xl shadow-lg">
                   <span className="text-primary-yellow font-bold">10+ Years Experience</span>
@@ -87,7 +86,7 @@ export default async function AboutPage() {
           <div className="max-w-4xl mx-auto">
             {/* About Ms. Jane */}
             <div className="bg-white rounded-2xl p-8 md:p-10 shadow-sm mb-8">
-              <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 border-b border-light-yellow pb-4">
+              <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 border-b border-primary-blue/50 pb-4">
                 About Ms. Jane
               </h2>
               <div className="prose prose-lg prose-yellow mx-auto">
@@ -101,7 +100,7 @@ export default async function AboutPage() {
             </div>
 
             {/* My Teaching Philosophy */}
-            <div className="bg-light-yellow/20 rounded-2xl p-8 md:p-10 shadow-sm mb-8">
+            <div className="bg-light-blue rounded-2xl p-8 md:p-10 shadow-sm mb-8">
               <div className="flex items-center gap-3 mb-6">
                 <div className="bg-primary-yellow p-3 rounded-full">
                   <svg
@@ -223,11 +222,11 @@ export default async function AboutPage() {
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
-                {teacherInfo.education.map((item, index) => (
+                {/* {teacherInfo.education.map((item, index) => (
                   <div key={index} className="bg-light-yellow/10 rounded-lg p-5 border-l-4 border-primary-yellow">
                     <p className="font-medium text-gray-800">{item}</p>
                   </div>
-                ))}
+                ))} */}
               </div>
 
               <div className="mt-8 p-6 bg-light-blue/10 rounded-lg border border-dashed border-primary-blue/30">
@@ -295,7 +294,7 @@ export default async function AboutPage() {
 
         {/* Personal Note Section */}
         <section className="container-custom">
-          <div className="bg-gradient-to-r from-light-yellow/30 to-light-blue/30 rounded-2xl p-8 md:p-10 shadow-sm">
+          <div className="bg-primary-yellow/80 rounded-2xl p-8 md:p-10 shadow-sm">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-2xl font-bold mb-4">A Personal Note</h2>
               <p className="text-gray-700 mb-6">
@@ -334,11 +333,6 @@ export default async function AboutPage() {
               </div>
             </div>
           </div>
-        </section>
-
-        {/* Newsletter */}
-        <section className="container-custom">
-          <NewsletterForm />
         </section>
       </div>
     </>
