@@ -2,14 +2,14 @@
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { formatDate, generateStructuredData } from "@/shared/utils/utils"
-// import ArticleCard from "@/shared/components/article-card"
-import NewsletterForm from "@/shared/components/newsletter-form"
+import { generateStructuredData } from "@/shared/utils/utils"
 import { getArticleById } from "@/entities/articles/api/getArticleById"
 import { getUser } from "@/entities/user/api/getUser"
 import { Metadata } from "next"
+import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html'
+import RichTextRenderer from "@/shared/components/RichTextRenderer"
 
-interface ArticlePageProps {
+type ArticlePageProps = {
   params: {
     slug: string
   }
@@ -47,22 +47,18 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
 }
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
-  const [article, author] = await Promise.all([getArticleById(params.slug), getUser()])
+  const [article] = await Promise.all([getArticleById(params.slug), getUser()])
 
   if (!article) {
     notFound()
   }
 
-  const structuredData = generateStructuredData("article", article)
-
   return (
     <>
-      {/* Add structured data */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
 
       <article className="pb-16">
         {/* Article Header */}
-        <div className="bg-light-yellow/30 pt-12 pb-16">
+        <div className="bg-light-primary-yellow/30 pt-12 pb-16">
           <div className="container-custom">
             <Link
               href="/articles"
@@ -111,25 +107,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         <div className="container-custom">
           <div className="max-w-3xl mx-auto">
             <div className="prose prose-lg prose-yellow mx-auto">
-              {/* In a real app, you would use a markdown renderer here */}
-              <div dangerouslySetInnerHTML={{ __html: article.content.replace(/\n/g, "<br />") }} />
-            </div>
-
-            {/* Author Info */}
-            <div className="mt-12 pt-8 border-t border-gray-200">
-              <div className="flex items-center gap-4">
-                <Image
-                  src={author.avatarUrl || "/placeholder.svg"}
-                  alt={author.firstName}
-                  width={60}
-                  height={60}
-                  className="rounded-full"
-                />
-                <div>
-                  <h3 className="font-bold text-lg">{author.firstName} {author.lastName}</h3>
-                  <p className="text-gray-600">Kindergarten Teacher</p>
-                </div>
-              </div>
+            <RichTextRenderer delta={JSON.parse(JSON.stringify(article.content))} />
             </div>
           </div>
         </div>

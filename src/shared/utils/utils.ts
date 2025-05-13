@@ -24,10 +24,7 @@ export function generateStructuredData(type: "article" | "person", data: any) {
       image: data.coverImage,
       datePublished: data.publishedAt,
       dateModified: data.updatedAt,
-      author: {
-        "@type": "Person",
-        name: data.author.name,
-      },
+    
     }
   }
 

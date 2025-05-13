@@ -1,7 +1,8 @@
 import Link from "next/link"
 import Image from "next/image"
-import { formatDate } from "@/shared/utils/utils"
 import type { Article } from "@/entities/articles/type"
+import { getImageUrl } from "../utils/getImage"
+import { AUTHOR_ID } from "../constants/auth"
 
 interface ArticleCardProps {
   article: Article
@@ -9,33 +10,34 @@ interface ArticleCardProps {
 }
 
 export default function ArticleCard({ article, featured = false }: ArticleCardProps) {
-  return (
+
+  return (  
     <article className={`bg-white rounded-2xl overflow-hidden shadow-sm card-hover ${featured ? "md:col-span-2" : ""}`}>
-      <Link href={`/articles/${article.slug}`} className="block">
+      <Link href={`/articles/${article.id}`} className="block">
         <div className="relative aspect-video w-full">
-          <Image src={article.coverImage || "/placeholder.svg"} alt={article.title} fill className="object-cover" />
+          <Image unoptimized src={getImageUrl(`/articles${article.coverImage}`, AUTHOR_ID) } alt={article.title} fill className="object-cover" />
           <div className="absolute top-4 left-4 bg-primary-yellow/90 text-white text-xs font-medium px-3 py-1 rounded-full">
-            {article.category}
+            {article.tags.map((tag) => tag.title).join(", ")}
           </div>
         </div>
       </Link>
 
       <div className="p-6">
         <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
-          <time dateTime={article.publishedAt}>{formatDate(article.publishedAt)}</time>
+          {/* <time dateTime={article.publishedAt}>{formatDate(article.publishedAt)}</time> */}
         </div>
 
-        <Link href={`/articles/${article.slug}`} className="block group">
+        <Link href={`/articles/${article.id}`} className="block group">
           <h3
             className={`font-bold text-gray-800 group-hover:text-primary-yellow transition-colors ${featured ? "text-2xl mb-3" : "text-xl mb-2"}`}
           >
             {article.title}
           </h3>
-          <p className="text-gray-600 mb-4 line-clamp-2">{article.excerpt}</p>
+          {/* <p className="text-gray-600 mb-4 line-clamp-2">{article.excerpt}</p> */}
         </Link>
 
         <Link
-          href={`/articles/${article.slug}`}
+          href={`/articles/${article.id}`}
           className="inline-flex items-center font-medium text-primary-yellow hover:text-primary-yellow/80 transition-colors"
         >
           Read more

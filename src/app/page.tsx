@@ -6,6 +6,10 @@ import CategoryCard from "@/shared/components/category-card"
 import { getUser } from "@/entities/user/api/getUser"
 import { getArticles } from "@/entities/articles/api/getArticles"
 import { getTags } from "@/entities/tags/api/getTags"
+import HeroImage from "@/shared/assets/hero/hero.png"
+import HeroImage1 from "@/shared/assets/hero/hero-1.png"
+import HeroImage2 from "@/shared/assets/hero/hero-2.png"
+
 
 export const metadata: Metadata = {
   title: "Growing Minds Kindergarten - Exploring and Growing Together",
@@ -21,7 +25,7 @@ export default async function Home() {
   return (
     <div className="flex flex-col gap-16 md:gap-24 pb-16">  
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-light-yellow to-white pt-12 pb-16 md:pt-20 md:pb-24">
+      <section className="bg-gradient-to-b from-primary-blue/70 to-white pt-12 pb-16 md:pt-20 md:pb-24">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="order-2 md:order-1">
@@ -38,7 +42,7 @@ export default async function Home() {
             <div className="order-1 md:order-2 relative">
               <div className="relative h-[300px] md:h-[400px] w-full">
                 <Image
-                  src="/placeholder.svg?height=400&width=600"
+                  src={HeroImage}
                   alt="Kindergarten classroom with children engaged in learning activities"
                   fill
                   className="object-cover rounded-2xl"
@@ -47,7 +51,7 @@ export default async function Home() {
               </div>
               <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg hidden md:block animate-float">
                 <Image
-                  src="/placeholder.svg?height=80&width=80"
+                  src={HeroImage1}
                   alt="Decorative element"
                   width={80}
                   height={80}
@@ -59,7 +63,7 @@ export default async function Home() {
                 style={{ animationDelay: "2s" }}
               >
                 <Image
-                  src="/placeholder.svg?height=80&width=80"
+                  src={HeroImage2}
                   alt="Decorative element"
                   width={80}
                   height={80}

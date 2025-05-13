@@ -18,7 +18,7 @@ type ArticlesPageProps = {
 export default async function ArticlesPage({ searchParams }: ArticlesPageProps) {
   const [articles, categories] = await Promise.all([getArticles({ page: 1, limit: 10}), getTags()])
   
-  console.log(articles, "articles")
+
   const activeCategory = searchParams?.category
     ? categories.find((cat) => cat.id === searchParams.category)?.title
     : null
