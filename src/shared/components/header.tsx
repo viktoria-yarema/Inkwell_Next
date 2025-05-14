@@ -1,13 +1,13 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { Menu, X } from "lucide-react"
-import LogoImage from "@/shared/assets/logos/inkwell.svg"
+import { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Menu, X } from 'lucide-react';
+import LogoImage from '@/shared/assets/logos/inkwell.svg';
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <header className="bg-white/80  sticky top-0 z-50 backdrop-blur-[4px] backdrop-saturate-[100%]  bg-opacity-10 border border-opacity-0 border-[#ffffff]">
@@ -27,13 +27,22 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          <Link href="/" className="font-medium text-gray-700 hover:text-primary-yellow transition-colors">
+          <Link
+            href="/"
+            className="font-medium text-gray-700 hover:text-primary-yellow transition-colors"
+          >
             Home
           </Link>
-          <Link href="/articles" className="font-medium text-gray-700 hover:text-primary-yellow transition-colors">
+          <Link
+            href="/articles"
+            className="font-medium text-gray-700 hover:text-primary-yellow transition-colors"
+          >
             Articles
           </Link>
-          <Link href="/about" className="font-medium text-gray-700 hover:text-primary-yellow transition-colors">
+          <Link
+            href="/about"
+            className="font-medium text-gray-700 hover:text-primary-yellow transition-colors"
+          >
             About Teacher
           </Link>
         </nav>
@@ -42,7 +51,7 @@ export default function Header() {
         <button
           className="md:hidden text-gray-700 hover:text-primary-yellow"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -77,5 +86,5 @@ export default function Header() {
         </div>
       )}
     </header>
-  )
+  );
 }

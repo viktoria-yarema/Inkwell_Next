@@ -12,8 +12,8 @@ export type Article = {
 };
 
 export enum ArticleStatus {
-  DRAFT = "draft",
-  PUBLISHED = "published",
+  DRAFT = 'draft',
+  PUBLISHED = 'published',
 }
 
 export type GetArticlesQuery = {
@@ -30,4 +30,3 @@ export type GetArticlesResponse = {
     totalPages: number;
   };
 };
-

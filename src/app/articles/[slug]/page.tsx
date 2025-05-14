@@ -1,27 +1,27 @@
 // import type { Metadata } from "next"
-import Image from "next/image"
-import Link from "next/link"
-import { notFound } from "next/navigation"
-import { getArticleById } from "@/entities/articles/api/getArticleById"
-import { Metadata } from "next"
-import RichTextRenderer from "@/shared/components/RichTextRenderer"
-import { getImageUrl } from "@/shared/utils/getImage"
-import { AUTHOR_ID } from "@/shared/constants/auth"
-import { getTags } from "@/entities/tags/api/getTags"
+import Image from 'next/image';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { getArticleById } from '@/entities/articles/api/getArticleById';
+import { Metadata } from 'next';
+import RichTextRenderer from '@/shared/components/RichTextRenderer';
+import { getImageUrl } from '@/shared/utils/getImage';
+import { AUTHOR_ID } from '@/shared/constants/auth';
+import { getTags } from '@/entities/tags/api/getTags';
 
 type ArticlePageProps = {
   params: {
-    slug: string
-  }
-}
+    slug: string;
+  };
+};
 
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
-  const article = await getArticleById(params.slug)
-  
+  const article = await getArticleById(params.slug);
+
   if (!article) {
     return {
-      title: "Article Not Found",
-    }
+      title: 'Article Not Found',
+    };
   }
 
   // TODO: add description to article and cover image
@@ -31,26 +31,26 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     openGraph: {
       title: article.title,
       // description: article.excerpt,
-      type: "article",
+      type: 'article',
       // publishedTime: article.publishedAt,
       // modifiedTime: article.updatedAt,
       images: [
         {
-          url: article.coverImage ?? "/placeholder.svg",
+          url: article.coverImage ?? '/placeholder.svg',
           width: 1200,
           height: 630,
           alt: article.title,
         },
       ],
     },
-  }
+  };
 }
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
-  const [article, tags] = await Promise.all([getArticleById(params.slug), getTags()])
+  const [article, tags] = await Promise.all([getArticleById(params.slug), getTags()]);
 
   if (!article) {
-    notFound()
+    notFound();
   }
 
   return (
@@ -69,14 +69,19 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
               Back to Articles
             </Link>
 
             <div className="max-w-3xl mx-auto text-center">
               <div className="inline-block bg-primary-yellow/90 text-white text-sm font-medium px-4 py-1 rounded-full mb-4">
-                {article.tags.map((tagId) => tags.find((tag) => tag.id === tagId)?.title).join(", ")}
+                {article.tags.map(tagId => tags.find(tag => tag.id === tagId)?.title).join(', ')}
               </div>
               <h1 className="text-3xl md:text-5xl font-bold mb-4">{article.title}</h1>
               <div className="flex items-center justify-center gap-2 text-gray-600 mb-6">
@@ -105,7 +110,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         <div className="container-custom">
           <div className="max-w-3xl mx-auto">
             <div className="prose prose-lg prose-yellow mx-auto">
-            <RichTextRenderer delta={JSON.parse(JSON.stringify(article.content))} />
+              <RichTextRenderer delta={JSON.parse(JSON.stringify(article.content))} />
             </div>
           </div>
         </div>
@@ -124,5 +129,5 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         </div> */}
       </section>
     </>
-  )
+  );
 }

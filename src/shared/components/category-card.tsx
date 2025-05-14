@@ -1,13 +1,13 @@
-import Link from "next/link"
-import { BookOpen } from "lucide-react"
-import type { Tag } from "@/entities/tags/type"
-import { TAG_ICONS } from "@/entities/tags/constants"
+import Link from 'next/link';
+import { BookOpen } from 'lucide-react';
+import type { Tag } from '@/entities/tags/type';
+import { TAG_ICONS } from '@/entities/tags/constants';
 interface CategoryCardProps {
-  category: Tag
+  category: Tag;
 }
 
 export default function CategoryCard({ category }: CategoryCardProps) {
-  const IconComponent = TAG_ICONS[category.icon]?.Icon || BookOpen
+  const IconComponent = TAG_ICONS[category.icon]?.Icon || BookOpen;
 
   return (
     <Link
@@ -19,5 +19,5 @@ export default function CategoryCard({ category }: CategoryCardProps) {
       </div>
       <p className="font-bold text-lg mb-2">{category.title}</p>
     </Link>
-  )
+  );
 }

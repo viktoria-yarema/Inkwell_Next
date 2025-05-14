@@ -6,7 +6,7 @@ export type Tag = {
   icon: InkwellIcon;
 };
 
-export type UpdateTag = Omit<Tag, "createdAt" | "updatedAt">;
+export type UpdateTag = Omit<Tag, 'createdAt' | 'updatedAt'>;
 
 export type ArticleTagId = string;
 

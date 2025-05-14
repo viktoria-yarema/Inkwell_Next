@@ -1,37 +1,42 @@
-import Image from "next/image"
-import Link from "next/link"
-import type { Metadata } from "next"
-import ArticleCard from "@/shared/components/article-card"
-import CategoryCard from "@/shared/components/category-card"
-import { getUser } from "@/entities/user/api/getUser"
-import { getArticles } from "@/entities/articles/api/getArticles"
-import { getTags } from "@/entities/tags/api/getTags"
-import HeroImage from "@/shared/assets/hero/hero.png"
-import HeroImage1 from "@/shared/assets/hero/hero-1.png"
-import HeroImage2 from "@/shared/assets/hero/hero-2.png"
-
+import Image from 'next/image';
+import Link from 'next/link';
+import type { Metadata } from 'next';
+import ArticleCard from '@/shared/components/article-card';
+import CategoryCard from '@/shared/components/category-card';
+import { getUser } from '@/entities/user/api/getUser';
+import { getArticles } from '@/entities/articles/api/getArticles';
+import { getTags } from '@/entities/tags/api/getTags';
+import HeroImage from '@/shared/assets/hero/hero.png';
+import HeroImage1 from '@/shared/assets/hero/hero-1.png';
+import HeroImage2 from '@/shared/assets/hero/hero-2.png';
 
 export const metadata: Metadata = {
-  title: "Growing Minds Kindergarten - Exploring and Growing Together",
+  title: 'Growing Minds Kindergarten - Exploring and Growing Together',
   description:
     "A kindergarten teacher's blog sharing early childhood education insights, activities, and resources for parents and educators.",
-}
+};
 
 export default async function Home() {
-  const [user, articles, categories] = await Promise.all([getUser(), getArticles({ page: 1, limit: 3 }), getTags()])
+  const [user, articles, categories] = await Promise.all([
+    getUser(),
+    getArticles({ page: 1, limit: 3 }),
+    getTags(),
+  ]);
 
   return (
-    <div className="flex flex-col gap-16 md:gap-24 pb-16">  
+    <div className="flex flex-col gap-16 md:gap-24 pb-16">
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary-blue/70 to-white pt-12 pb-16 md:pt-20 md:pb-24">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="order-2 md:order-1">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">Exploring and Growing Together</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
+                Exploring and Growing Together
+              </h1>
               <p className="text-lg text-gray-700 mb-6">
-                Welcome to Growing Minds! I&apos;m Ms. Jane, a kindergarten teacher passionate about early childhood
-                education. Here you&apos;ll find creative activities, teaching resources, and insights to support young
-                learners.
+                Welcome to Growing Minds! I&apos;m Ms. Jane, a kindergarten teacher passionate about
+                early childhood education. Here you&apos;ll find creative activities, teaching
+                resources, and insights to support young learners.
               </p>
               <Link href="/articles" className="btn-primary inline-block">
                 View Articles
@@ -58,7 +63,7 @@ export default async function Home() {
               </div>
               <div
                 className="absolute -top-6 -right-6 bg-white p-4 rounded-xl shadow-lg hidden md:block animate-float"
-                style={{ animationDelay: "2s" }}
+                style={{ animationDelay: '2s' }}
               >
                 <Image
                   src={HeroImage2}
@@ -77,12 +82,13 @@ export default async function Home() {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Latest Articles</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Discover the latest teaching resources, activities, and insights for kindergarten education.
+            Discover the latest teaching resources, activities, and insights for kindergarten
+            education.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {articles.articles?.map((article) => (
+          {articles.articles?.map(article => (
             <ArticleCard key={article.id} article={article} tags={categories} />
           ))}
         </div>
@@ -103,7 +109,7 @@ export default async function Home() {
                 {user.avatarUrl && (
                   <Image
                     src={user.avatarUrl}
-                    alt={user?.firstName ?? "teacher"}
+                    alt={user?.firstName ?? 'teacher'}
                     fill
                     className="object-cover rounded-2xl"
                   />
@@ -135,11 +141,11 @@ export default async function Home() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {categories.map((category) => (
+          {categories.map(category => (
             <CategoryCard key={category.id} category={category} />
           ))}
         </div>
       </section>
     </div>
-  )
+  );
 }

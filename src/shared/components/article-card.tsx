@@ -1,26 +1,36 @@
-import Link from "next/link"
-import Image from "next/image"
-import type { Article } from "@/entities/articles/type"
-import { getImageUrl } from "../utils/getImage"
-import { AUTHOR_ID } from "../constants/auth"
-import { Tag } from "@/entities/tags/type"
+import Link from 'next/link';
+import Image from 'next/image';
+import type { Article } from '@/entities/articles/type';
+import { getImageUrl } from '../utils/getImage';
+import { AUTHOR_ID } from '../constants/auth';
+import { Tag } from '@/entities/tags/type';
 
 type ArticleCardProps = {
-  article: Article
-  featured?: boolean
-  tags: Tag[]
-}
+  article: Article;
+  featured?: boolean;
+  tags: Tag[];
+};
 
 export default function ArticleCard({ article, featured = false, tags }: ArticleCardProps) {
-  const articleCategories = article.tags.map((tagId) => tags.find((tag) => tagId == tag.id)?.title ?? "").filter(Boolean)
+  const articleCategories = article.tags
+    .map(tagId => tags.find(tag => tagId == tag.id)?.title ?? '')
+    .filter(Boolean);
 
-  return (  
-    <article className={`bg-white rounded-2xl overflow-hidden shadow-sm card-hover ${featured ? "md:col-span-2" : ""}`}>
+  return (
+    <article
+      className={`bg-white rounded-2xl overflow-hidden shadow-sm card-hover ${featured ? 'md:col-span-2' : ''}`}
+    >
       <Link href={`/articles/${article.id}`} className="block">
         <div className="relative aspect-video w-full">
-          <Image unoptimized src={getImageUrl(`/articles/${article.coverImage}`, AUTHOR_ID) } alt={article.title} fill className="object-cover" />
+          <Image
+            unoptimized
+            src={getImageUrl(`/articles/${article.coverImage}`, AUTHOR_ID)}
+            alt={article.title}
+            fill
+            className="object-cover"
+          />
           <div className="absolute top-4 left-4 bg-primary-yellow/90 text-white text-xs font-medium px-3 py-1 rounded-full">
-            {articleCategories.join(", ")}
+            {articleCategories.join(', ')}
           </div>
         </div>
       </Link>
@@ -32,7 +42,7 @@ export default function ArticleCard({ article, featured = false, tags }: Article
 
         <Link href={`/articles/${article.id}`} className="block group">
           <h3
-            className={`font-bold text-gray-800 group-hover:text-primary-yellow transition-colors ${featured ? "text-2xl mb-3" : "text-xl mb-2"}`}
+            className={`font-bold text-gray-800 group-hover:text-primary-yellow transition-colors ${featured ? 'text-2xl mb-3' : 'text-xl mb-2'}`}
           >
             {article.title}
           </h3>
@@ -56,5 +66,5 @@ export default function ArticleCard({ article, featured = false, tags }: Article
         </Link>
       </div>
     </article>
-  )
+  );
 }

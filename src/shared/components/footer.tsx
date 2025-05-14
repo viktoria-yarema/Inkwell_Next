@@ -1,10 +1,10 @@
-import Link from "next/link"
-import { Facebook, Twitter, Instagram, Mail } from "lucide-react"
-import { getTags } from "@/entities/tags/api/getTags"
+import Link from 'next/link';
+import { Facebook, Twitter, Instagram, Mail } from 'lucide-react';
+import { getTags } from '@/entities/tags/api/getTags';
 
 export default async function Footer() {
-  const currentYear = new Date().getFullYear()
-  const tags = await getTags()
+  const currentYear = new Date().getFullYear();
+  const tags = await getTags();
 
   return (
     <footer className="bg-primary-blue/70 pt-12 pb-6 *:hover:text-black">
@@ -13,7 +13,8 @@ export default async function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Growing Minds</h3>
             <p className="text-gray-600 mb-4">
-              A kindergarten teacher&lsquo;s blog sharing early childhood education insights, activities, and resources.
+              A kindergarten teacher&lsquo;s blog sharing early childhood education insights,
+              activities, and resources.
             </p>
             <div className="flex gap-4">
               <a
@@ -59,13 +60,22 @@ export default async function Footer() {
               <Link href="/" className="text-gray-600 hover:text-primary-yellow transition-colors">
                 Home
               </Link>
-              <Link href="/articles" className="text-gray-600 hover:text-primary-yellow transition-colors">
+              <Link
+                href="/articles"
+                className="text-gray-600 hover:text-primary-yellow transition-colors"
+              >
                 Articles
               </Link>
-              <Link href="/about" className="text-gray-600 hover:text-primary-yellow transition-colors">
+              <Link
+                href="/about"
+                className="text-gray-600 hover:text-primary-yellow transition-colors"
+              >
                 About Teacher
               </Link>
-              <Link href="/privacy-policy" className="text-gray-600 hover:text-primary-yellow transition-colors">
+              <Link
+                href="/privacy-policy"
+                className="text-gray-600 hover:text-primary-yellow transition-colors"
+              >
                 Privacy Policy
               </Link>
             </nav>
@@ -74,12 +84,12 @@ export default async function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Categories</h3>
             <nav className="flex flex-col gap-2">
-              {tags.map((tag) => (
+              {tags.map(tag => (
                 <Link
                   key={tag.id}
                   href={`/articles?category=${tag.id}`}
                   className="text-gray-600 hover:text-primary-yellow transition-colors"
-                > 
+                >
                   {tag.title}
                 </Link>
               ))}
@@ -92,5 +102,5 @@ export default async function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

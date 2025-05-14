@@ -1,23 +1,26 @@
-import type { Metadata } from "next"
-import Image from "next/image"
-import { getUser } from "@/entities/user/api/getUser"
-import { generateStructuredData } from "@/shared/utils/utils"
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import { getUser } from '@/entities/user/api/getUser';
+import { generateStructuredData } from '@/shared/utils/utils';
 
 export const metadata: Metadata = {
-  title: "About the Teacher",
+  title: 'About the Teacher',
   description:
-    "Learn more about Ms. Jane, a dedicated kindergarten teacher with over 10 years of experience in early childhood education.",
-}
+    'Learn more about Ms. Jane, a dedicated kindergarten teacher with over 10 years of experience in early childhood education.',
+};
 
 export default async function AboutPage() {
   const teacherInfo = await getUser();
 
   // Generate structured data for SEO
-  const structuredData = generateStructuredData("person", teacherInfo)
+  const structuredData = generateStructuredData('person', teacherInfo);
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
 
       <div className="flex flex-col gap-16 pb-16">
         {/* Hero Section */}
@@ -89,10 +92,10 @@ export default async function AboutPage() {
               </h2>
               <div className="prose prose-lg prose-yellow mx-auto">
                 <p className="text-gray-700 leading-relaxed">
-                  With over a decade of experience in early childhood education, I've dedicated my career to creating
-                  nurturing, stimulating environments where young children can thrive. I hold a Master's degree in Early
-                  Childhood Education from State University and am certified in Reggio Emilia and Montessori teaching
-                  approaches.
+                  With over a decade of experience in early childhood education, I've dedicated my
+                  career to creating nurturing, stimulating environments where young children can
+                  thrive. I hold a Master's degree in Early Childhood Education from State
+                  University and am certified in Reggio Emilia and Montessori teaching approaches.
                 </p>
               </div>
             </div>
@@ -120,15 +123,15 @@ export default async function AboutPage() {
               </div>
               <div className="prose prose-lg prose-yellow mx-auto">
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  I believe that every child is naturally curious and capable. My role as an educator is to provide the
-                  right environment, materials, and guidance to help them explore, question, and discover. I emphasize
-                  learning through play, as I've seen firsthand how play-based learning leads to deeper understanding
-                  and retention.
+                  I believe that every child is naturally curious and capable. My role as an
+                  educator is to provide the right environment, materials, and guidance to help them
+                  explore, question, and discover. I emphasize learning through play, as I've seen
+                  firsthand how play-based learning leads to deeper understanding and retention.
                 </p>
                 <p className="text-gray-700 leading-relaxed">
-                  In my classroom, we focus on developing the whole child—not just academic skills, but social,
-                  emotional, physical, and creative abilities as well. I believe in creating a community of learners
-                  where children feel safe, respected, and valued.
+                  In my classroom, we focus on developing the whole child—not just academic skills,
+                  but social, emotional, physical, and creative abilities as well. I believe in
+                  creating a community of learners where children feel safe, respected, and valued.
                 </p>
               </div>
             </div>
@@ -161,10 +164,13 @@ export default async function AboutPage() {
                   <div className="absolute left-[-8px] top-0 w-3.5 h-3.5 bg-primary-blue rounded-full"></div>
                   <div className="bg-white rounded-lg p-5 shadow-sm">
                     <h3 className="font-bold text-lg text-gray-800">Lead Kindergarten Teacher</h3>
-                    <p className="text-primary-blue font-medium">Sunshine Elementary (2015-Present)</p>
+                    <p className="text-primary-blue font-medium">
+                      Sunshine Elementary (2015-Present)
+                    </p>
                     <p className="mt-2 text-gray-600">
-                      Developing and implementing curriculum for kindergarten students, collaborating with parents and
-                      staff, and creating a positive learning environment.
+                      Developing and implementing curriculum for kindergarten students,
+                      collaborating with parents and staff, and creating a positive learning
+                      environment.
                     </p>
                   </div>
                 </div>
@@ -173,10 +179,12 @@ export default async function AboutPage() {
                   <div className="absolute left-[-8px] top-0 w-3.5 h-3.5 bg-primary-blue rounded-full"></div>
                   <div className="bg-white rounded-lg p-5 shadow-sm">
                     <h3 className="font-bold text-lg text-gray-800">Early Childhood Educator</h3>
-                    <p className="text-primary-blue font-medium">Little Learners Preschool (2012-2015)</p>
+                    <p className="text-primary-blue font-medium">
+                      Little Learners Preschool (2012-2015)
+                    </p>
                     <p className="mt-2 text-gray-600">
-                      Assisted in classroom management, developed age-appropriate activities, and supported children's
-                      social and emotional development.
+                      Assisted in classroom management, developed age-appropriate activities, and
+                      supported children's social and emotional development.
                     </p>
                   </div>
                 </div>
@@ -185,10 +193,13 @@ export default async function AboutPage() {
                   <div className="absolute left-[-8px] top-0 w-3.5 h-3.5 bg-primary-blue rounded-full"></div>
                   <div className="bg-white rounded-lg p-5 shadow-sm">
                     <h3 className="font-bold text-lg text-gray-800">Student Teacher</h3>
-                    <p className="text-primary-blue font-medium">Bright Beginnings Academy (2010-2012)</p>
+                    <p className="text-primary-blue font-medium">
+                      Bright Beginnings Academy (2010-2012)
+                    </p>
                     <p className="mt-2 text-gray-600">
-                      Gained practical classroom experience under the guidance of experienced teachers, developed lesson
-                      plans, and participated in parent-teacher conferences.
+                      Gained practical classroom experience under the guidance of experienced
+                      teachers, developed lesson plans, and participated in parent-teacher
+                      conferences.
                     </p>
                   </div>
                 </div>
@@ -296,9 +307,9 @@ export default async function AboutPage() {
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-2xl font-bold mb-4">A Personal Note</h2>
               <p className="text-gray-700 mb-6">
-                When I'm not in the classroom, you can find me hiking with my dog Max, tending to my garden, or
-                volunteering at the local children's museum. I'm always looking for new ideas and inspiration to bring
-                back to my students!
+                When I'm not in the classroom, you can find me hiking with my dog Max, tending to my
+                garden, or volunteering at the local children's museum. I'm always looking for new
+                ideas and inspiration to bring back to my students!
               </p>
               <div className="flex justify-center gap-4">
                 <div className="bg-white p-2 rounded-lg shadow-sm">
@@ -334,5 +345,5 @@ export default async function AboutPage() {
         </section>
       </div>
     </>
-  )
+  );
 }
