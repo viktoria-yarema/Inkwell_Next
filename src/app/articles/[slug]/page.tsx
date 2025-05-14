@@ -2,12 +2,12 @@
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { generateStructuredData } from "@/shared/utils/utils"
 import { getArticleById } from "@/entities/articles/api/getArticleById"
-import { getUser } from "@/entities/user/api/getUser"
 import { Metadata } from "next"
-import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html'
 import RichTextRenderer from "@/shared/components/RichTextRenderer"
+import { getImageUrl } from "@/shared/utils/getImage"
+import { AUTHOR_ID } from "@/shared/constants/auth"
+import { getTags } from "@/entities/tags/api/getTags"
 
 type ArticlePageProps = {
   params: {
@@ -17,7 +17,7 @@ type ArticlePageProps = {
 
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
   const article = await getArticleById(params.slug)
-
+  
   if (!article) {
     return {
       title: "Article Not Found",
@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
 }
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
-  const [article] = await Promise.all([getArticleById(params.slug), getUser()])
+  const [article, tags] = await Promise.all([getArticleById(params.slug), getTags()])
 
   if (!article) {
     notFound()
@@ -55,9 +55,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   return (
     <>
-
       <article className="pb-16">
-        {/* Article Header */}
         <div className="bg-light-primary-yellow/30 pt-12 pb-16">
           <div className="container-custom">
             <Link
@@ -77,9 +75,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             </Link>
 
             <div className="max-w-3xl mx-auto text-center">
-              {/* <div className="inline-block bg-primary-yellow/90 text-white text-sm font-medium px-4 py-1 rounded-full mb-4">
-                {article.category}
-              </div> */}
+              <div className="inline-block bg-primary-yellow/90 text-white text-sm font-medium px-4 py-1 rounded-full mb-4">
+                {article.tags.map((tagId) => tags.find((tag) => tag.id === tagId)?.title).join(", ")}
+              </div>
               <h1 className="text-3xl md:text-5xl font-bold mb-4">{article.title}</h1>
               <div className="flex items-center justify-center gap-2 text-gray-600 mb-6">
                 {/* <time dateTime={article.publishedAt}>{formatDate(new Date(article.publishedAt).toString())}</time> */}
@@ -90,17 +88,17 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           </div>
         </div>
 
-        {/* Featured Image */}
         <div className="container-custom -mt-10 mb-12">
-          {/* <div className="relative aspect-video max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-lg">
+          <div className="relative aspect-video max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-lg">
             <Image
-              src={article.coverImage || "/placeholder.svg"}
+              src={getImageUrl(`/articles/${article.coverImage}`, AUTHOR_ID)}
               alt={article.title}
               fill
               className="object-cover"
               priority
+              unoptimized
             />
-          </div> */}
+          </div>
         </div>
 
         {/* Article Content */}

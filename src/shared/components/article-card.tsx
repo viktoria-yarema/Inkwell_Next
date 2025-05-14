@@ -3,21 +3,24 @@ import Image from "next/image"
 import type { Article } from "@/entities/articles/type"
 import { getImageUrl } from "../utils/getImage"
 import { AUTHOR_ID } from "../constants/auth"
+import { Tag } from "@/entities/tags/type"
 
-interface ArticleCardProps {
+type ArticleCardProps = {
   article: Article
   featured?: boolean
+  tags: Tag[]
 }
 
-export default function ArticleCard({ article, featured = false }: ArticleCardProps) {
+export default function ArticleCard({ article, featured = false, tags }: ArticleCardProps) {
+  const articleCategories = article.tags.map((tagId) => tags.find((tag) => tagId == tag.id)?.title ?? "").filter(Boolean)
 
   return (  
     <article className={`bg-white rounded-2xl overflow-hidden shadow-sm card-hover ${featured ? "md:col-span-2" : ""}`}>
       <Link href={`/articles/${article.id}`} className="block">
         <div className="relative aspect-video w-full">
-          <Image unoptimized src={getImageUrl(`/articles${article.coverImage}`, AUTHOR_ID) } alt={article.title} fill className="object-cover" />
+          <Image unoptimized src={getImageUrl(`/articles/${article.coverImage}`, AUTHOR_ID) } alt={article.title} fill className="object-cover" />
           <div className="absolute top-4 left-4 bg-primary-yellow/90 text-white text-xs font-medium px-3 py-1 rounded-full">
-            {article.tags.map((tag) => tag.title).join(", ")}
+            {articleCategories.join(", ")}
           </div>
         </div>
       </Link>

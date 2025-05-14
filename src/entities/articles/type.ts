@@ -16,10 +16,10 @@ export enum ArticleStatus {
   PUBLISHED = "published",
 }
 
-
 export type GetArticlesQuery = {
   page?: number;
   limit?: number;
+  tag?: string;
 };
 
 export type GetArticlesResponse = {

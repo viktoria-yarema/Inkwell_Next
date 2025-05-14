@@ -13,7 +13,7 @@ export const apiRequest = async <T>(url: string, options: RequestInit = {}): Pro
       "Authorization": `Bearer ${token}`
     },
     next: {
-      revalidate: 1000
+      revalidate: 1000 * 60 * 60 * 24
     }
   });
   return response.json();

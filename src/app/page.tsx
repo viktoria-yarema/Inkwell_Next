@@ -18,9 +18,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  const user = await getUser();
-  const articles = await getArticles({ page: 1, limit: 3 });
-  const categories = await getTags();
+  const [user, articles, categories] = await Promise.all([getUser(), getArticles({ page: 1, limit: 3 }), getTags()])
 
   return (
     <div className="flex flex-col gap-16 md:gap-24 pb-16">  
@@ -85,7 +83,7 @@ export default async function Home() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {articles.articles?.map((article) => (
-            <ArticleCard key={article.id} article={article} />
+            <ArticleCard key={article.id} article={article} tags={categories} />
           ))}
         </div>
 

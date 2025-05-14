@@ -1,8 +1,10 @@
 import Link from "next/link"
 import { Facebook, Twitter, Instagram, Mail } from "lucide-react"
+import { getTags } from "@/entities/tags/api/getTags"
 
-export default function Footer() {
+export default async function Footer() {
   const currentYear = new Date().getFullYear()
+  const tags = await getTags()
 
   return (
     <footer className="bg-primary-blue/70 pt-12 pb-6 *:hover:text-black">
@@ -72,30 +74,15 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Categories</h3>
             <nav className="flex flex-col gap-2">
-              <Link
-                href="/articles?category=arts-crafts"
-                className="text-gray-600 hover:text-primary-yellow transition-colors"
-              >
-                Arts & Crafts
-              </Link>
-              <Link
-                href="/articles?category=early-learning"
-                className="text-gray-600 hover:text-primary-yellow transition-colors"
-              >
-                Early Learning
-              </Link>
-              <Link
-                href="/articles?category=activities"
-                className="text-gray-600 hover:text-primary-yellow transition-colors"
-              >
-                Activities
-              </Link>
-              <Link
-                href="/articles?category=social-emotional-learning"
-                className="text-gray-600 hover:text-primary-yellow transition-colors"
-              >
-                Social-Emotional Learning
-              </Link>
+              {tags.map((tag) => (
+                <Link
+                  key={tag.id}
+                  href={`/articles?category=${tag.id}`}
+                  className="text-gray-600 hover:text-primary-yellow transition-colors"
+                > 
+                  {tag.title}
+                </Link>
+              ))}
             </nav>
           </div>
         </div>

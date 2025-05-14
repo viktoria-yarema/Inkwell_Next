@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import Image from "next/image"
-import { Mail, } from "lucide-react"
 import { getUser } from "@/entities/user/api/getUser"
 import { generateStructuredData } from "@/shared/utils/utils"
 
@@ -18,7 +17,6 @@ export default async function AboutPage() {
 
   return (
     <>
-  
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
 
       <div className="flex flex-col gap-16 pb-16">

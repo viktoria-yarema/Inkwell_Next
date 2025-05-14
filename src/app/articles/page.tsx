@@ -16,12 +16,13 @@ type ArticlesPageProps = {
 }
 
 export default async function ArticlesPage({ searchParams }: ArticlesPageProps) {
-  const [articles, categories] = await Promise.all([getArticles({ page: 1, limit: 10}), getTags()])
-  
+  const category = searchParams?.category
+  const [articles, categories] = await Promise.all([getArticles({ page: 1, limit: 10, tag: category }), getTags()])
 
-  const activeCategory = searchParams?.category
-    ? categories.find((cat) => cat.id === searchParams.category)?.title
+  const activeCategory = category
+    ? categories.find((cat) => cat.id === category)?.title
     : null
+
 
   return (
     <div className="container-custom py-12 md:py-16">
@@ -66,7 +67,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
       {articles.articles?.length > 0 ? (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {articles.articles?.map((article) => (
-            <ArticleCard key={article.id} article={article} />
+            <ArticleCard key={article.id} article={article} tags={categories} />
           ))}
         </div>
       ) : (
