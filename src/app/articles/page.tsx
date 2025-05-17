@@ -2,6 +2,7 @@ import { getArticles } from '@/entities/articles/api/getArticles';
 import { getTags } from '@/entities/tags/api/getTags';
 import { TAG_ICONS } from '@/entities/tags/constants';
 import ArticleCard from '@/shared/components/ArticleCard';
+import { ARTICLES_PATH } from '@/shared/routes/paths';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
@@ -53,7 +54,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
             return (
               <Link
                 key={category.id}
-                href={`/articles?category=${category.id}`}
+                href={`/${ARTICLES_PATH}?category=${category.id}`}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors flex items-center gap-1 ${
                   searchParams.category === category.id
                     ? 'bg-primary-yellow text-white'
