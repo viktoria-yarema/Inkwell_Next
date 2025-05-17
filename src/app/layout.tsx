@@ -2,8 +2,8 @@ import type React from 'react';
 import type { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
 import '../shared/styles/globals.css';
-import Header from '@/shared/components/header';
-import Footer from '@/shared/components/footer';
+import Header from '@/shared/components/Layout/Header';
+import Footer from '@/shared/components/Layout/Footer';
 import { ThemeProvider } from '@/shared/components/theme-provider';
 
 const nunito = Nunito({

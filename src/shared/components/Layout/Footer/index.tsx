@@ -1,6 +1,8 @@
-import Link from 'next/link';
-import { Facebook, Twitter, Instagram, Mail } from 'lucide-react';
 import { getTags } from '@/entities/tags/api/getTags';
+import { navLinks } from '@/shared/constants/navLinks';
+import { PRIVACY_PATH } from '@/shared/routes/paths';
+import { Facebook, Mail } from 'lucide-react';
+import Link from 'next/link';
 
 export default async function Footer() {
   const currentYear = new Date().getFullYear();
@@ -27,24 +29,6 @@ export default async function Footer() {
                 <Facebook size={20} />
               </a>
               <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-primary-yellow transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter size={20} />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-primary-yellow transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram size={20} />
-              </a>
-              <a
                 href="mailto:contact@growingminds.edu"
                 className="text-gray-600 hover:text-primary-yellow transition-colors"
                 aria-label="Email"
@@ -57,23 +41,17 @@ export default async function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Quick Links</h3>
             <nav className="flex flex-col gap-2">
-              <Link href="/" className="text-gray-600 hover:text-primary-yellow transition-colors">
-                Home
-              </Link>
+              {navLinks.map(link => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="text-gray-600 hover:text-primary-yellow transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
               <Link
-                href="/articles"
-                className="text-gray-600 hover:text-primary-yellow transition-colors"
-              >
-                Articles
-              </Link>
-              <Link
-                href="/about"
-                className="text-gray-600 hover:text-primary-yellow transition-colors"
-              >
-                About Teacher
-              </Link>
-              <Link
-                href="/privacy-policy"
+                href={PRIVACY_PATH}
                 className="text-gray-600 hover:text-primary-yellow transition-colors"
               >
                 Privacy Policy

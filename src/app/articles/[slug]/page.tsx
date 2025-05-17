@@ -1,13 +1,12 @@
 // import type { Metadata } from "next"
+import { getArticleById } from '@/entities/articles/api/getArticleById';
+import { getTags } from '@/entities/tags/api/getTags';
+import RichTextRenderer from '@/shared/components/RichTextRenderer';
+import { getImageUrl } from '@/shared/utils/getImage';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getArticleById } from '@/entities/articles/api/getArticleById';
-import { Metadata } from 'next';
-import RichTextRenderer from '@/shared/components/RichTextRenderer';
-import { getImageUrl } from '@/shared/utils/getImage';
-import { AUTHOR_ID } from '@/shared/constants/auth';
-import { getTags } from '@/entities/tags/api/getTags';
 
 type ArticlePageProps = {
   params: {
@@ -96,7 +95,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         <div className="container-custom -mt-10 mb-12">
           <div className="relative aspect-video max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-lg">
             <Image
-              src={getImageUrl(`/articles/${article.coverImage}`, AUTHOR_ID)}
+              src={getImageUrl(`/articles/${article.coverImage}`)}
               alt={article.title}
               fill
               className="object-cover"

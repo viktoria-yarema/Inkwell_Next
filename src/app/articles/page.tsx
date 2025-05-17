@@ -1,9 +1,9 @@
-import type { Metadata } from 'next';
-import ArticleCard from '@/shared/components/article-card';
-import Link from 'next/link';
 import { getArticles } from '@/entities/articles/api/getArticles';
 import { getTags } from '@/entities/tags/api/getTags';
 import { TAG_ICONS } from '@/entities/tags/constants';
+import ArticleCard from '@/shared/components/ArticleCard';
+import type { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Articles',

@@ -1,4 +1,6 @@
-export const getImageUrl = (imageUrl: string, userId = '') => {
+import { AUTHOR_ID } from '../constants/auth';
+
+export const getImageUrl = (imageUrl: string) => {
   if (!imageUrl) return imageUrl;
 
   if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
@@ -6,5 +8,5 @@ export const getImageUrl = (imageUrl: string, userId = '') => {
   }
 
   const bucketPath = process.env.NEXT_PUBLIC_GOOGLE_STORAGE_BUCKET || 'bucket';
-  return `${bucketPath}/${userId}${imageUrl}`;
+  return `${bucketPath}/${AUTHOR_ID}${imageUrl}`;
 };

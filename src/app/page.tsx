@@ -1,14 +1,14 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import type { Metadata } from 'next';
-import ArticleCard from '@/shared/components/article-card';
-import CategoryCard from '@/shared/components/category-card';
-import { getUser } from '@/entities/user/api/getUser';
 import { getArticles } from '@/entities/articles/api/getArticles';
 import { getTags } from '@/entities/tags/api/getTags';
-import HeroImage from '@/shared/assets/hero/hero.png';
+import { getUser } from '@/entities/user/api/getUser';
 import HeroImage1 from '@/shared/assets/hero/hero-1.png';
 import HeroImage2 from '@/shared/assets/hero/hero-2.png';
+import HeroImage from '@/shared/assets/hero/hero.png';
+import ArticleCard from '@/shared/components/ArticleCard';
+import CategoryCard from '@/shared/components/CaregoryCard';
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Growing Minds Kindergarten - Exploring and Growing Together',
@@ -140,7 +140,7 @@ export default async function Home() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="flex flex-wrap gap-6 justify-center mx-auto">
           {categories.map(category => (
             <CategoryCard key={category.id} category={category} />
           ))}

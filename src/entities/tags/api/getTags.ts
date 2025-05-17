@@ -4,5 +4,6 @@ import { formatTag } from '../utils';
 
 export const getTags = async (): Promise<Tag[]> => {
   const response = await apiRequest<Tag[]>('/tags');
-  return response.map(formatTag);
+  console.log(response);
+  return response?.map(formatTag) ?? [];
 };
