@@ -1,6 +1,6 @@
-import HeroImage1 from '@/public/images/hero-image-1.jpg';
-import HeroImage2 from '@/public/images/hero-image-2.jpg';
-import HeroImage from '@/public/images/hero-image.jpg';
+import HeroImage1 from '@/shared/assets/hero/hero-1.png';
+import HeroImage2 from '@/shared/assets/hero/hero-2.png';
+import HeroImage from '@/shared/assets/hero/hero-3.png';
 import { ARTICLES_PATH } from '@/shared/routes/paths';
 import Image from 'next/image';
 import Link from 'next/link';

@@ -1,12 +1,12 @@
 import { getTags } from '@/entities/tags/api/getTags';
 import { navLinks } from '@/shared/constants/navLinks';
-import { PRIVACY_PATH } from '@/shared/routes/paths';
+import { ARTICLES_PATH, PRIVACY_PATH } from '@/shared/routes/paths';
 import { Facebook, Mail } from 'lucide-react';
 import Link from 'next/link';
 
 export default async function Footer() {
-  const currentYear = new Date().getFullYear();
   const tags = await getTags();
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-primary-blue/70 pt-12 pb-6 *:hover:text-black">
@@ -65,7 +65,7 @@ export default async function Footer() {
               {tags.map(tag => (
                 <Link
                   key={tag.id}
-                  href={`/articles?category=${tag.id}`}
+                  href={`${ARTICLES_PATH}?category=${tag.id}`}
                   className="text-gray-600 hover:text-primary-yellow transition-colors"
                 >
                   {tag.title}

@@ -1,8 +1,8 @@
 import { apiRequest } from '@/shared/api/instance';
-import { ArticleStatus, GetArticlesQuery, GetArticlesResponse } from '../type';
+import { ArticleStatus, GetArticlesData, GetArticlesQuery, GetArticlesResponse } from '../type';
 import { formatArticle } from '../utils';
 
-export const getArticles = async (query: GetArticlesQuery): Promise<GetArticlesResponse> => {
+export const getArticles = async (query: GetArticlesQuery): Promise<GetArticlesData> => {
   const params = new URLSearchParams({
     page: query.page?.toString() ?? '1',
     limit: query.limit?.toString() ?? '10',
@@ -11,5 +11,5 @@ export const getArticles = async (query: GetArticlesQuery): Promise<GetArticlesR
   });
 
   const response = await apiRequest<GetArticlesResponse>(`/articles?${params.toString()}`);
-  return { ...response, articles: response.articles?.map(article => formatArticle(article)) };
+  return { ...response, items: response.articles?.map(article => formatArticle(article)) };
 };

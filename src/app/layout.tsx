@@ -1,10 +1,10 @@
-import type React from 'react';
+import Footer from '@/shared/components/Layout/Footer';
+import Header from '@/shared/components/Layout/Header';
+import { ThemeProvider } from '@/shared/components/theme-provider';
 import type { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
+import type React from 'react';
 import '../shared/styles/globals.css';
-import Header from '@/shared/components/Layout/Header';
-import Footer from '@/shared/components/Layout/Footer';
-import { ThemeProvider } from '@/shared/components/theme-provider';
 
 const nunito = Nunito({
   subsets: ['latin'],
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${nunito.variable} font-nunito min-h-screen flex flex-col`}>

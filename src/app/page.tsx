@@ -8,6 +8,7 @@ import { ABOUT_PATH, ARTICLES_PATH } from '@/shared/routes/paths';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import getExperienceYears from '@/shared/utils/getExperienceYears';
 
 export const metadata: Metadata = {
   title: 'Growing Minds Kindergarten - Exploring and Growing Together',
@@ -22,6 +23,8 @@ export default async function Home() {
     getTags(),
   ]);
 
+  const experienceYears = getExperienceYears();
+
   return (
     <div className="flex flex-col gap-16 md:gap-24 pb-16">
       <Hero />
@@ -35,7 +38,7 @@ export default async function Home() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {articles.articles?.map(article => (
+          {articles.items?.map(article => (
             <ArticleCard key={article.id} article={article} tags={categories} />
           ))}
         </div>
@@ -62,8 +65,10 @@ export default async function Home() {
                   />
                 )}
               </div>
-              <div className="absolute -bottom-6 -right-6 bg-white p-3 rounded-xl shadow-lg">
-                <span className="text-primary-yellow font-bold">10+ Years Experience</span>
+              <div className="absolute bottom-6 right-6 bg-white p-3 rounded-xl shadow-lg">
+                <span className="text-primary-yellow font-bold">
+                  {experienceYears}+ Years Experience
+                </span>
               </div>
             </div>
 

@@ -22,6 +22,15 @@ export type GetArticlesQuery = {
   tag?: string;
 };
 
+export type GetArticlesData = {
+  items: Article[];
+  meta: {
+    total: number;
+    page: number;
+    totalPages: number;
+  };
+};
+
 export type GetArticlesResponse = {
   articles: Article[];
   meta: {

@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { getUser } from '@/entities/user/api/getUser';
 import { generateStructuredData } from '@/shared/utils/utils';
+import { Briefcase, GraduationCap } from 'lucide-react';
+import getExperienceYears from '@/shared/utils/getExperienceYears';
 
 export const metadata: Metadata = {
   title: 'About the Teacher',
@@ -28,7 +30,7 @@ export default async function AboutPage() {
           <div className="container-custom">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               <div>
-                <h1 className="text-4xl md:text-5xl font-bold mb-4">About the Teacher</h1>
+                <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary-blue">About the Teacher</h1>
                 <p className="text-lg text-gray-700 mb-6">{teacherInfo.bio}</p>
                 <div className="flex gap-4">
                   {/* {teacherInfo.socialLinks.twitter && (
@@ -74,8 +76,9 @@ export default async function AboutPage() {
                     priority
                   /> */}
                 </div>
-                <div className="absolute -bottom-6 -right-6 bg-white p-3 rounded-xl shadow-lg">
-                  <span className="text-primary-yellow font-bold">10+ Years Experience</span>
+                <div className="absolute bottom-6 right-6 bg-white p-3 rounded-xl shadow-lg">
+                  <span className="text-primary-yellow font-bold">
+                    {getExperienceYears()}+ Years Experience</span>
                 </div>
               </div>
             </div>
@@ -263,7 +266,7 @@ export default async function AboutPage() {
         </section>
 
         {/* Education & Experience */}
-        {/* <section className="container-custom">
+        <section className="container-custom">
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white rounded-2xl p-8 shadow-sm">
               <div className="flex items-center gap-3 mb-6">
@@ -273,12 +276,12 @@ export default async function AboutPage() {
                 <h2 className="text-2xl font-bold">Education</h2>
               </div>
               <ul className="space-y-4">
-                {teacherInfo.education.map((item, index) => (
+                {/* {teacherInfo.education.map((item, index) => (
                   <li key={index} className="flex gap-3">
                     <div className="flex-shrink-0 w-2 h-2 bg-primary-yellow rounded-full mt-3"></div>
                     <p>{item}</p>
                   </li>
-                ))}
+                ))} */}
               </ul>
             </div>
 
@@ -290,16 +293,16 @@ export default async function AboutPage() {
                 <h2 className="text-2xl font-bold">Experience</h2>
               </div>
               <ul className="space-y-4">
-                {teacherInfo.experience.map((item, index) => (
+                {/* {teacherInfo.experience.map((item, index) => (
                   <li key={index} className="flex gap-3">
                     <div className="flex-shrink-0 w-2 h-2 bg-primary-yellow rounded-full mt-3"></div>
                     <p>{item}</p>
                   </li>
-                ))}
+                ))} */}
               </ul>
             </div>
           </div>
-        </section> */}
+        </section>
 
         {/* Personal Note Section */}
         <section className="container-custom">
@@ -311,7 +314,7 @@ export default async function AboutPage() {
                 garden, or volunteering at the local children's museum. I'm always looking for new
                 ideas and inspiration to bring back to my students!
               </p>
-              <div className="flex justify-center gap-4">
+              <div className="flex flex-wrap justify-center gap-4">
                 <div className="bg-white p-2 rounded-lg shadow-sm">
                   <Image
                     src="/placeholder.svg?height=120&width=120"

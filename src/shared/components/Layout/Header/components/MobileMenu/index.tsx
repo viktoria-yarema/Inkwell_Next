@@ -13,8 +13,8 @@ const MobileMenu = () => {
           className="md:hidden group text-gray-700 hover:text-primary-yellow focus:outline-none"
           aria-label="Open menu"
         >
-          <X size={24} className="hidden group-data-[state=open]:block" />
-          <Menu size={24} className="block group-data-[state=open]:hidden" />
+          <X size={24} className="hidden group-data-[state=open]:block text-primary-yellow" />
+          <Menu size={24} className="block group-data-[state=open]:hidden text-primary-yellow" />
         </button>
       </PopoverTrigger>
       <PopoverContent align="end" className="w-screen p-0 border-none mt-4" forceMount>

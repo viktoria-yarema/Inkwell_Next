@@ -1,11 +1,12 @@
 import type { Article } from '@/entities/articles/type';
+import getArticleImage from '@/entities/articles/utils/getArticleImage';
 import { Tag } from '@/entities/tags/type';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ARTICLE_PATH } from '../routes/paths';
-import { getImageUrl } from '../utils/getImage';
-import { cn, formatDate } from '../utils/utils';
+import { cn } from '../utils/cn';
+import { formatDate } from '../utils/utils';
 
 type ArticleCardProps = {
   article: Article;
@@ -24,11 +25,11 @@ export default function ArticleCard({ article, featured = false, tags }: Article
         'md:col-span-2': featured,
       })}
     >
-      <Link href={`${ARTICLE_PATH}/${article.id}`} className="block">
+      <Link href={`${ARTICLE_PATH.replace(':id', article.id)}`} className="block">
         <div className="relative aspect-video w-full">
           <Image
             unoptimized
-            src={getImageUrl(`/articles/${article.coverImage}`)}
+            src={getArticleImage(article.coverImage)}
             alt={article.title}
             fill
             className="object-cover"
