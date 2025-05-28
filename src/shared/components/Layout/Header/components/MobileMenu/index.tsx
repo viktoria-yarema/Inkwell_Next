@@ -42,13 +42,15 @@ const MobileMenu = () => {
             </DialogHeader>
             <nav className="flex flex-col gap-4">
               {navLinks.map(link => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="font-medium text-gray-700 transition-colors py-2"
-                >
-                  {link.label}
-                </Link>
+                <DialogClose asChild key={link.label}>
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className="font-medium text-gray-700 transition-colors py-2"
+                  >
+                    {link.label}
+                  </Link>
+                </DialogClose>
               ))}
             </nav>
           </m.div>
