@@ -7,16 +7,36 @@ export function formatDate(dateString: string): string {
   }).format(date);
 }
 
-export function generateStructuredData(type: 'article' | 'person', data: any) {
+type ArticleData = {
+  title: string;
+  excerpt?: string;
+  coverImage?: string;
+  publishedAt?: string;
+  updatedAt?: string;
+};
+
+type PersonData = {
+  name: string;
+  role?: string;
+  bio?: string;
+  avatar?: string;
+};
+
+export function generateStructuredData(type: 'article', data: ArticleData): Record<string, unknown>;
+export function generateStructuredData(type: 'person', data: PersonData): Record<string, unknown>;
+export function generateStructuredData(
+  type: 'article' | 'person',
+  data: ArticleData | PersonData
+): Record<string, unknown> | null {
   if (type === 'article') {
     return {
       '@context': 'https://schema.org',
       '@type': 'Article',
-      headline: data.title,
-      description: data.excerpt,
-      image: data.coverImage,
-      datePublished: data.publishedAt,
-      dateModified: data.updatedAt,
+      headline: (data as ArticleData).title,
+      description: (data as ArticleData).excerpt,
+      image: (data as ArticleData).coverImage,
+      datePublished: (data as ArticleData).publishedAt,
+      dateModified: (data as ArticleData).updatedAt,
     };
   }
 
@@ -24,10 +44,10 @@ export function generateStructuredData(type: 'article' | 'person', data: any) {
     return {
       '@context': 'https://schema.org',
       '@type': 'Person',
-      name: data.name,
-      jobTitle: data.role,
-      description: data.bio,
-      image: data.avatar,
+      name: (data as PersonData).name,
+      jobTitle: (data as PersonData).role,
+      description: (data as PersonData).bio,
+      image: (data as PersonData).avatar,
     };
   }
 

@@ -1,9 +1,9 @@
+import { getUser } from '@/entities/user/api/getUser';
+import getExperienceYears from '@/shared/utils/getExperienceYears';
+// import { generateStructuredData } from '@/shared/utils/utils';
+import { Briefcase, GraduationCap } from 'lucide-react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { getUser } from '@/entities/user/api/getUser';
-import { generateStructuredData } from '@/shared/utils/utils';
-import { Briefcase, GraduationCap } from 'lucide-react';
-import getExperienceYears from '@/shared/utils/getExperienceYears';
 
 export const metadata: Metadata = {
   title: 'About the Teacher',
@@ -15,14 +15,14 @@ export default async function AboutPage() {
   const teacherInfo = await getUser();
 
   // Generate structured data for SEO
-  const structuredData = generateStructuredData('person', teacherInfo);
+  // const structuredData = generateStructuredData('person', teacherInfo);
 
   return (
     <>
-      <script
+      {/* <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+      /> */}
 
       <div className="flex flex-col gap-16 pb-16">
         {/* Hero Section */}
@@ -30,7 +30,9 @@ export default async function AboutPage() {
           <div className="container-custom">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               <div>
-                <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary-blue">About the Teacher</h1>
+                <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary-blue">
+                  About the Teacher
+                </h1>
                 <p className="text-lg text-gray-700 mb-6">{teacherInfo.bio}</p>
                 <div className="flex gap-4">
                   {/* {teacherInfo.socialLinks.twitter && (
@@ -78,7 +80,8 @@ export default async function AboutPage() {
                 </div>
                 <div className="absolute bottom-6 right-6 bg-white p-3 rounded-xl shadow-lg">
                   <span className="text-primary-yellow font-bold">
-                    {getExperienceYears()}+ Years Experience</span>
+                    {getExperienceYears()}+ Years Experience
+                  </span>
                 </div>
               </div>
             </div>
@@ -95,9 +98,9 @@ export default async function AboutPage() {
               </h2>
               <div className="prose prose-lg prose-yellow mx-auto">
                 <p className="text-gray-700 leading-relaxed">
-                  With over a decade of experience in early childhood education, I've dedicated my
-                  career to creating nurturing, stimulating environments where young children can
-                  thrive. I hold a Master's degree in Early Childhood Education from State
+                  With over a decade of experience in early childhood education, I&apos;ve dedicated
+                  my career to creating nurturing, stimulating environments where young children can
+                  thrive. I hold a Master&apos;s degree in Early Childhood Education from State
                   University and am certified in Reggio Emilia and Montessori teaching approaches.
                 </p>
               </div>
@@ -128,8 +131,9 @@ export default async function AboutPage() {
                 <p className="text-gray-700 leading-relaxed mb-4">
                   I believe that every child is naturally curious and capable. My role as an
                   educator is to provide the right environment, materials, and guidance to help them
-                  explore, question, and discover. I emphasize learning through play, as I've seen
-                  firsthand how play-based learning leads to deeper understanding and retention.
+                  explore, question, and discover. I emphasize learning through play, as I&apos;ve
+                  seen firsthand how play-based learning leads to deeper understanding and
+                  retention.
                 </p>
                 <p className="text-gray-700 leading-relaxed">
                   In my classroom, we focus on developing the whole child—not just academic skills,
@@ -187,7 +191,7 @@ export default async function AboutPage() {
                     </p>
                     <p className="mt-2 text-gray-600">
                       Assisted in classroom management, developed age-appropriate activities, and
-                      supported children's social and emotional development.
+                      supported children&apos;s social and emotional development.
                     </p>
                   </div>
                 </div>
@@ -310,9 +314,9 @@ export default async function AboutPage() {
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-2xl font-bold mb-4">A Personal Note</h2>
               <p className="text-gray-700 mb-6">
-                When I'm not in the classroom, you can find me hiking with my dog Max, tending to my
-                garden, or volunteering at the local children's museum. I'm always looking for new
-                ideas and inspiration to bring back to my students!
+                When I&apos;m not in the classroom, you can find me hiking with my dog Max, tending
+                to my garden, or volunteering at the local children&apos;s museum. I&apos;m always
+                looking for new ideas and inspiration to bring back to my students!
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <div className="bg-white p-2 rounded-lg shadow-sm">

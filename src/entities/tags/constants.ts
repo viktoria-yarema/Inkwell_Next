@@ -1,29 +1,28 @@
 import {
-  Palette,
-  BookOpen,
-  Heart,
-  Pencil,
-  Users,
-  Smile,
   Apple,
+  Bell,
+  BookOpen,
   Calendar,
   Camera,
-  Video,
-  MessageCircle,
-  Image,
-  List,
   CheckCircle,
-  Star,
-  Globe,
-  Bell,
   Clipboard,
   FileText,
-  LucideProps,
+  Globe,
+  Heart,
+  Image,
+  List,
+  MessageCircle,
+  Palette,
+  Pencil,
+  Smile,
+  Star,
+  Users,
+  Video,
 } from 'lucide-react';
+import { FC, SVGProps } from 'react';
 import { InkwellIcon } from './type';
-import { FC } from 'react';
 
-export const TAG_ICONS: Record<InkwellIcon, { name: string; Icon: FC<any> }> = {
+export const TAG_ICONS: Record<InkwellIcon, { name: string; Icon: FC<SVGProps<SVGSVGElement>> }> = {
   [InkwellIcon.BookOpen]: {
     name: 'BookOpen',
     Icon: BookOpen,
