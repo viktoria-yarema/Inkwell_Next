@@ -59,7 +59,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   return (
     <>
-      <article className="pb-16">
+      <article className="pb-16 container-custom">
         <div className="bg-light-primary-yellow/30 pt-12 pb-16">
           <div className="container-custom">
             <div className="max-w-3xl mx-auto text-center">

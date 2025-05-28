@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 const Hero = () => {
   return (
-    <section className="bg-gradient-to-b from-primary-blue/70 to-white pt-12 pb-16 md:pt-20 md:pb-24">
+    <section className="bg-gradient-to-b from-primary-blue/70 to-white pt-16 pb-16 md:pt-20 md:pb-24 ">
       <div className="container-custom">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="order-2 md:order-1">

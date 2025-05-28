@@ -7,6 +7,7 @@ export type User = {
   createdAt: Date;
   updatedAt: Date;
   avatarUrl?: string;
+  bio?: string;
 };
 
 export type UpdateUser = {

@@ -61,7 +61,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
-                {Icon && <Icon size={14} />}
+                {Icon && <Icon className="w-3.5 h-3.5" />}
                 {category.title.toUpperCase()}
               </Link>
             );

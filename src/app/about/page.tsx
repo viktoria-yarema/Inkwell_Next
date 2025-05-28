@@ -24,9 +24,9 @@ export default async function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       /> */}
 
-      <div className="flex flex-col gap-16 pb-16">
+      <div className="flex flex-col gap-16 pb-16 container-custom">
         {/* Hero Section */}
-        <section className=" pt-12 pb-16">
+        <section className="pb-16">
           <div className="container-custom">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               <div>
