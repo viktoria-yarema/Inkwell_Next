@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from "@/hooks/use-toast";
 import {
   Toast,
   ToastClose,
@@ -9,7 +9,7 @@ import {
   ToastTitle,
   ToastViewport,
   type ToastActionElement,
-} from '@/shared/components/ui/toast';
+} from "@/shared/components/ui/toast";
 
 export function Toaster() {
   const { toasts } = useToast();
@@ -27,7 +27,7 @@ export function Toaster() {
         title?: React.ReactNode;
         description?: React.ReactNode;
         action?: ToastActionElement;
-        [key: string]: any;
+        [key: string]: unknown;
       }) {
         return (
           <Toast key={id} {...props}>
