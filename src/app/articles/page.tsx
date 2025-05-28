@@ -1,23 +1,23 @@
-import { getArticles } from '@/entities/articles/api/getArticles';
-import { getTags } from '@/entities/tags/api/getTags';
-import { TAG_ICONS } from '@/entities/tags/constants';
-import ArticleCard from '@/shared/components/ArticleCard';
-import { ARTICLES_PATH } from '@/shared/routes/paths';
-import type { Metadata } from 'next';
-import Link from 'next/link';
+import { getArticles } from "@/entities/articles/api/getArticles";
+import { getTags } from "@/entities/tags/api/getTags";
+import { TAG_ICONS } from "@/entities/tags/constants";
+import ArticleCard from "@/shared/components/ArticleCard";
+import { ARTICLES_PATH } from "@/shared/routes/paths";
+import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: 'Articles',
+  title: "Articles",
   description:
-    'Browse all articles on early childhood education, activities, and resources for kindergarten teachers and parents.',
+    "Browse all articles on early childhood education, activities, and resources for kindergarten teachers and parents.",
 };
 
 type ArticlesPageProps = {
-  searchParams: { category?: string };
+  searchParams: Promise<{ category?: string }>;
 };
 
 export default async function ArticlesPage({ searchParams }: ArticlesPageProps) {
-  const category = searchParams?.category;
+  const { category } = await searchParams;
   const [articles, categories] = await Promise.all([
     getArticles({ page: 1, limit: 10, tag: category }),
     getTags(),
@@ -29,12 +29,12 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
     <div className="container-custom py-12 md:py-16">
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          {activeCategory ? `${activeCategory} Articles` : 'All Articles'}
+          {activeCategory ? `${activeCategory} Articles` : "All Articles"}
         </h1>
         <p className="text-gray-600 max-w-2xl mx-auto">
           {activeCategory
             ? `Browse our collection of articles about ${activeCategory.toLowerCase()}.`
-            : 'Browse our collection of articles on early childhood education, activities, and resources.'}
+            : "Browse our collection of articles on early childhood education, activities, and resources."}
         </p>
       </div>
       <div className="mb-10">
@@ -42,27 +42,27 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
           <Link
             href={ARTICLES_PATH}
             className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-              !searchParams.category
-                ? 'bg-primary-yellow text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              !category
+                ? "bg-primary-yellow text-white"
+                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
             }`}
           >
             All
           </Link>
-          {categories.map(category => {
-            const Icon = TAG_ICONS[category.icon]?.Icon;
+          {categories.map(cat => {
+            const Icon = TAG_ICONS[cat.icon]?.Icon;
             return (
               <Link
-                key={category.id}
-                href={`${ARTICLES_PATH}?category=${category.id}`}
+                key={cat.id}
+                href={`${ARTICLES_PATH}?category=${cat.id}`}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors flex items-center gap-1 ${
-                  searchParams.category === category.id
-                    ? 'bg-primary-yellow text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  category === cat.id
+                    ? "bg-primary-yellow text-white"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
               >
                 {Icon && <Icon className="w-3.5 h-3.5" />}
-                {category.title.toUpperCase()}
+                {cat.title.toUpperCase()}
               </Link>
             );
           })}

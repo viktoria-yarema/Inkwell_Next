@@ -1,26 +1,27 @@
-// import type { Metadata } from "next"
-import { getArticleById } from '@/entities/articles/api/getArticleById';
-import getArticleImage from '@/entities/articles/utils/getArticleImage';
-import { getTags } from '@/entities/tags/api/getTags';
-import { getUser } from '@/entities/user/api/getUser';
-import RichTextRenderer from '@/shared/components/RichTextRenderer';
-import { formatDate } from '@/shared/utils/utils';
-import { Metadata } from 'next';
-import Image from 'next/image';
-import { notFound } from 'next/navigation';
+import { getArticleById } from "@/entities/articles/api/getArticleById";
+import getArticleImage from "@/entities/articles/utils/getArticleImage";
+import { getTags } from "@/entities/tags/api/getTags";
+import { getUser } from "@/entities/user/api/getUser";
+import RichTextRenderer from "@/shared/components/RichTextRenderer";
+import { formatDate } from "@/shared/utils/utils";
+import { Metadata } from "next";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+
+type Params = Promise<{ slug: string }>;
 
 type ArticlePageProps = {
-  params: {
-    slug: string;
-  };
+  params: Params;
+  searchParams: Promise<{ category?: string }>;
 };
 
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
-  const article = await getArticleById(params.slug);
+  const { slug } = await params;
+  const article = await getArticleById(slug);
 
   if (!article) {
     return {
-      title: 'Article Not Found',
+      title: "Article Not Found",
     };
   }
 
@@ -31,12 +32,12 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     openGraph: {
       title: article.title,
       // description: article.excerpt,
-      type: 'article',
+      type: "article",
       // publishedTime: article.publishedAt,
       // modifiedTime: article.updatedAt,
       images: [
         {
-          url: article.coverImage ?? '/placeholder.svg',
+          url: article.coverImage ?? "/placeholder.svg",
           width: 1200,
           height: 630,
           alt: article.title,
@@ -47,11 +48,8 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
 }
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
-  const [article, tags, user] = await Promise.all([
-    getArticleById(params.slug),
-    getTags(),
-    getUser(),
-  ]);
+  const { slug } = await params;
+  const [article, tags, user] = await Promise.all([getArticleById(slug), getTags(), getUser()]);
 
   if (!article) {
     notFound();
@@ -64,7 +62,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           <div className="container-custom">
             <div className="max-w-3xl mx-auto text-center">
               <div className="inline-block bg-primary-yellow/90 text-white text-sm font-medium px-4 py-1 rounded-full mb-4">
-                {article.tags.map(tagId => tags.find(tag => tag.id === tagId)?.title).join(', ')}
+                {article.tags.map(tagId => tags.find(tag => tag.id === tagId)?.title).join(", ")}
               </div>
               <h1 className="text-3xl md:text-5xl font-bold mb-4">{article.title}</h1>
               <div className="flex items-center justify-center gap-2 text-gray-600 mb-6">
