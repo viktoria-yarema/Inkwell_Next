@@ -1,14 +1,16 @@
-import { getUser } from '@/entities/user/api/getUser';
-import getExperienceYears from '@/shared/utils/getExperienceYears';
+import { getUser } from "@/entities/user/api/getUser";
+import getExperienceYears from "@/shared/utils/getExperienceYears";
 // import { generateStructuredData } from '@/shared/utils/utils';
-import { Briefcase, GraduationCap } from 'lucide-react';
-import type { Metadata } from 'next';
-import Image from 'next/image';
+import { Briefcase, GraduationCap } from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: 'About the Teacher',
+  title: "About the Teacher",
   description:
-    'Learn more about Ms. Jane, a dedicated kindergarten teacher with over 10 years of experience in early childhood education.',
+    "Learn more about Ms. Jane, a dedicated kindergarten teacher with over 10 years of experience in early childhood education.",
 };
 
 export default async function AboutPage() {

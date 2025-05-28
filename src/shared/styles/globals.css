@@ -1,5 +1,5 @@
-@import 'tailwindcss';
-@import './theme.css';
+@import "tailwindcss";
+@import "./theme.css";
 
 @layer base {
   :root {
@@ -100,7 +100,7 @@
 
 @layer components {
   .container-custom {
-    @apply container mx-auto px-4 md:px-6 max-w-7xl pt-8 lg:pt-14;
+    @apply container mx-auto px-4 md:px-6 max-w-7xl pt-20 lg:pt-24;
   }
 
   .btn-primary {
