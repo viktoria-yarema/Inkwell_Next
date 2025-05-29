@@ -1,17 +1,17 @@
-import { getArticles } from '@/entities/articles/api/getArticles';
-import { getTags } from '@/entities/tags/api/getTags';
-import { getUser } from '@/entities/user/api/getUser';
-import ArticleCard from '@/shared/components/ArticleCard';
-import CategoryCard from '@/shared/components/CaregoryCard';
-import Hero from '@/shared/components/Layout/Hero';
-import { ABOUT_PATH, ARTICLES_PATH } from '@/shared/routes/paths';
-import type { Metadata } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
-import getExperienceYears from '@/shared/utils/getExperienceYears';
+import { getArticles } from "@/entities/articles/api/getArticles";
+import { getTags } from "@/entities/tags/api/getTags";
+import { getUser } from "@/entities/user/api/getUser";
+import ArticleCard from "@/shared/components/ArticleCard";
+import CategoryCard from "@/shared/components/CaregoryCard";
+import Hero from "@/shared/components/Layout/Hero";
+import { ABOUT_PATH, ARTICLES_PATH } from "@/shared/routes/paths";
+import getExperienceYears from "@/shared/utils/getExperienceYears";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: 'Growing Minds Kindergarten - Exploring and Growing Together',
+  title: "Growing Minds Kindergarten - Exploring and Growing Together",
   description:
     "A kindergarten teacher's blog sharing early childhood education insights, activities, and resources for parents and educators.",
 };
@@ -59,7 +59,7 @@ export default async function Home() {
                 {user.avatarUrl && (
                   <Image
                     src={user.avatarUrl}
-                    alt={user?.firstName ?? 'teacher'}
+                    alt={user?.firstName ?? "teacher"}
                     fill
                     className="object-cover rounded-2xl"
                   />

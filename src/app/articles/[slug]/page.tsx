@@ -58,13 +58,13 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   return (
     <>
       <article className="pb-16 container-custom">
-        <div className="bg-light-primary-yellow/30 pt-12 pb-16">
-          <div className="container-custom">
+        <div className="bg-light-primary-yellow/30">
+          <div className="">
             <div className="max-w-3xl mx-auto text-center">
-              <div className="inline-block bg-primary-yellow/90 text-white text-sm font-medium px-4 py-1 rounded-full mb-4">
+              <h1 className="text-3xl md:text-5xl font-bold mb-4">{article.title}</h1>
+              <div className="flex w-fit mx-auto bg-primary-yellow/90 text-white text-sm font-medium px-4 py-1 rounded-full">
                 {article.tags.map(tagId => tags.find(tag => tag.id === tagId)?.title).join(", ")}
               </div>
-              <h1 className="text-3xl md:text-5xl font-bold mb-4">{article.title}</h1>
               <div className="flex items-center justify-center gap-2 text-gray-600 mb-6">
                 <time dateTime={article.publishedAt.toString()}>
                   {formatDate(article.publishedAt.toString())}
@@ -77,8 +77,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           </div>
         </div>
 
-        <div className="container-custom -mt-10 mb-12">
-          <div className="relative aspect-video max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-lg">
+        <div className="mb-12">
+          <div className="relative aspect-video w-full max-h-96 mx-auto rounded-2xl overflow-hidden shadow-lg">
             <Image
               src={getArticleImage(article.coverImage)}
               alt={article.title}
@@ -90,7 +90,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           </div>
         </div>
 
-        <div className="container-custom">
+        <div className="">
           <div className="max-w-3xl mx-auto">
             <div className="prose prose-lg prose-yellow mx-auto">
               <RichTextRenderer delta={JSON.parse(JSON.stringify(article.content))} />

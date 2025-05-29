@@ -3,7 +3,6 @@ import getExperienceYears from "@/shared/utils/getExperienceYears";
 // import { generateStructuredData } from '@/shared/utils/utils';
 import { Briefcase, GraduationCap } from "lucide-react";
 import type { Metadata } from "next";
-import Image from "next/image";
 
 export const dynamic = "force-dynamic";
 
@@ -29,7 +28,7 @@ export default async function AboutPage() {
       <div className="flex flex-col gap-16 pb-16 container-custom">
         {/* Hero Section */}
         <section className="pb-16">
-          <div className="container-custom">
+          <div className="">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary-blue">
@@ -91,7 +90,7 @@ export default async function AboutPage() {
         </section>
 
         {/* Biography Section */}
-        <section className="container-custom">
+        <section className="">
           <div className="max-w-4xl mx-auto">
             {/* About Ms. Jane */}
             <div className="bg-white rounded-2xl p-8 md:p-10 shadow-sm mb-8">
@@ -306,49 +305,6 @@ export default async function AboutPage() {
                   </li>
                 ))} */}
               </ul>
-            </div>
-          </div>
-        </section>
-
-        {/* Personal Note Section */}
-        <section className="container-custom">
-          <div className="bg-primary-yellow/80 rounded-2xl p-8 md:p-10 shadow-sm">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-2xl font-bold mb-4">A Personal Note</h2>
-              <p className="text-gray-700 mb-6">
-                When I&apos;m not in the classroom, you can find me hiking with my dog Max, tending
-                to my garden, or volunteering at the local children&apos;s museum. I&apos;m always
-                looking for new ideas and inspiration to bring back to my students!
-              </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <div className="bg-white p-2 rounded-lg shadow-sm">
-                  <Image
-                    src="/placeholder.svg?height=120&width=120"
-                    alt="Ms. Jane hiking with her dog"
-                    width={120}
-                    height={120}
-                    className="rounded-lg object-cover"
-                  />
-                </div>
-                <div className="bg-white p-2 rounded-lg shadow-sm">
-                  <Image
-                    src="/placeholder.svg?height=120&width=120"
-                    alt="Ms. Jane's garden"
-                    width={120}
-                    height={120}
-                    className="rounded-lg object-cover"
-                  />
-                </div>
-                <div className="bg-white p-2 rounded-lg shadow-sm">
-                  <Image
-                    src="/placeholder.svg?height=120&width=120"
-                    alt="Ms. Jane volunteering"
-                    width={120}
-                    height={120}
-                    className="rounded-lg object-cover"
-                  />
-                </div>
-              </div>
             </div>
           </div>
         </section>

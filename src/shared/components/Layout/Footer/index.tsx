@@ -10,7 +10,7 @@ export default async function Footer() {
 
   return (
     <footer className="bg-primary-blue/70 pt-12 pb-6 *:hover:text-black">
-      <div className="container-custom">
+      <div className="px-4 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
             <h3 className="text-xl font-bold mb-4">Growing Minds</h3>

@@ -26,7 +26,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
   const activeCategory = category ? categories.find(cat => cat.id === category)?.title : null;
 
   return (
-    <div className="container-custom">
+    <div className="container-custom pb-12">
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
           {activeCategory ? `${activeCategory} Articles` : "All Articles"}
