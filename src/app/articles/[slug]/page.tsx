@@ -33,8 +33,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
       title: article.title,
       // description: article.excerpt,
       type: "article",
-      // publishedTime: article.publishedAt,
-      // modifiedTime: article.updatedAt,
+      publishedTime: article.publishedAt.toString(),
       images: [
         {
           url: article.coverImage ?? "/placeholder.svg",
@@ -85,16 +84,13 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               fill
               className="object-cover"
               priority
-              unoptimized
             />
           </div>
         </div>
 
-        <div className="">
-          <div className="max-w-3xl mx-auto">
-            <div className="prose prose-lg prose-yellow mx-auto">
-              <RichTextRenderer delta={JSON.parse(JSON.stringify(article.content))} />
-            </div>
+        <div className="max-w-3xl mx-auto">
+          <div className="prose prose-lg prose-yellow mx-auto">
+            <RichTextRenderer delta={JSON.parse(JSON.stringify(article.content))} />
           </div>
         </div>
       </article>
