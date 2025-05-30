@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <section className="pt-16 pb-16 md:pt-20 md:pb-24 ">
+    <section className=" ">
       <div className="container-custom">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="order-2 md:order-1">
