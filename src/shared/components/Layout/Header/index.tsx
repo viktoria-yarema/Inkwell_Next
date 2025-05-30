@@ -1,14 +1,14 @@
-import LogoImage from '@/shared/assets/logos/inkwell.svg';
-import { HOME_PATH } from '@/shared/routes/paths';
-import Image from 'next/image';
-import Link from 'next/link';
-import { BackButton } from './components/BackButton';
-import DesktopNavigation from './components/DesktopNavigation';
-import MobileMenu from './components/MobileMenu';
+import LogoImage from "@/shared/assets/logos/inkwell.svg";
+import { HOME_PATH } from "@/shared/routes/paths";
+import Image from "next/image";
+import Link from "next/link";
+import { BackButton } from "./components/BackButton";
+import DesktopNavigation from "./components/DesktopNavigation";
+import MobileMenu from "./components/MobileMenu";
 
 export default function Header() {
   return (
-    <header className="bg-white/80 fixed right-0 left-0 top-0 z-50 backdrop-blur-sm backdrop-saturate-[100%]">
+    <header className="bg-primary-light/20 fixed right-0 left-0 top-0 z-50 backdrop-blur-sm backdrop-saturate-[100%]">
       <div className="container-custom py-4 flex items-center justify-between ">
         <div className="flex items-center gap-2">
           <BackButton />
@@ -22,7 +22,7 @@ export default function Header() {
                 className="object-contain"
               />
             </div>
-            <span className="font-bold text-xl md:text-2xl text-primary-yellow">Growing Minds</span>
+            <span className="font-bold text-xl md:text-2xl text-primary">Growing Minds</span>
           </Link>
         </div>
         <DesktopNavigation />

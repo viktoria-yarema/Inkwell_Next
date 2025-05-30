@@ -1,20 +1,20 @@
-import { getTags } from '@/entities/tags/api/getTags';
-import { navLinks } from '@/shared/constants/navLinks';
-import { ARTICLES_PATH, PRIVACY_PATH } from '@/shared/routes/paths';
-import { Facebook, Mail } from 'lucide-react';
-import Link from 'next/link';
+import { getTags } from "@/entities/tags/api/getTags";
+import { navLinks } from "@/shared/constants/navLinks";
+import { ARTICLES_PATH, PRIVACY_PATH } from "@/shared/routes/paths";
+import { Facebook, Mail } from "lucide-react";
+import Link from "next/link";
 
 export default async function Footer() {
   const tags = await getTags();
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-primary-blue/70 pt-12 pb-6 *:hover:text-black">
-      <div className="px-4 md:px-12">
+    <footer className="bg-primary-dark/70 pt-12 pb-6 text-font-primary">
+      <div className="px-4 md:px-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
             <h3 className="text-xl font-bold mb-4">Growing Minds</h3>
-            <p className="text-gray-600 mb-4">
+            <p className="text-font-primary/80 mb-4">
               A kindergarten teacher&lsquo;s blog sharing early childhood education insights,
               activities, and resources.
             </p>
@@ -23,14 +23,14 @@ export default async function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-primary-yellow transition-colors"
+                className="text-font-primary/80 hover:text-primary transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook size={20} />
               </a>
               <a
                 href="mailto:contact@growingminds.edu"
-                className="text-gray-600 hover:text-primary-yellow transition-colors"
+                className="text-font-primary/80 hover:text-primary transition-colors"
                 aria-label="Email"
               >
                 <Mail size={20} />
@@ -45,14 +45,14 @@ export default async function Footer() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="text-gray-600 hover:text-primary-yellow transition-colors"
+                  className="text-font-primary/80 hover:text-primary transition-colors"
                 >
                   {link.label}
                 </Link>
               ))}
               <Link
                 href={PRIVACY_PATH}
-                className="text-gray-600 hover:text-primary-yellow transition-colors"
+                className="text-font-primary/80 hover:text-primary transition-colors"
               >
                 Privacy Policy
               </Link>
@@ -66,7 +66,7 @@ export default async function Footer() {
                 <Link
                   key={tag.id}
                   href={`${ARTICLES_PATH}?category=${tag.id}`}
-                  className="text-gray-600 hover:text-primary-yellow transition-colors"
+                  className="text-font-primary/80 hover:text-primary transition-colors"
                 >
                   {tag.title}
                 </Link>
@@ -75,7 +75,7 @@ export default async function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-black/60 pt-6 text-center text-font-secondary text-sm">
+        <div className="border-t border-font-primary/20 pt-6 text-center text-font-primary/80 text-sm">
           <p>&copy; {currentYear} Growing Minds Kindergarten. All rights reserved.</p>
         </div>
       </div>

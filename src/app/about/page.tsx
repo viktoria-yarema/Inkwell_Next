@@ -1,7 +1,7 @@
 import { getUser } from "@/entities/user/api/getUser";
-import getExperienceYears from "@/shared/utils/getExperienceYears";
+import ExperienceBadge from "@/shared/components/ExperienceBadge";
+import { Card } from "@/shared/components/ui/card";
 // import { generateStructuredData } from '@/shared/utils/utils';
-import { Briefcase, GraduationCap } from "lucide-react";
 import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
@@ -31,17 +31,17 @@ export default async function AboutPage() {
           <div className="">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               <div>
-                <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary-blue">
+                <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary-dark title">
                   About the Teacher
                 </h1>
-                <p className="text-lg text-gray-700 mb-6">{teacherInfo.bio}</p>
+                <p className="subtitle text-left">{teacherInfo.bio}</p>
                 <div className="flex gap-4">
                   {/* {teacherInfo.socialLinks.twitter && (
                     <a
                       href={teacherInfo.socialLinks.twitter}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-primary-yellow text-white p-3 rounded-full hover:bg-primary-yellow/90 transition-colors"
+                      className="bg-primary text-white p-3 rounded-full hover:bg-primary/90 transition-colors"
                       aria-label="Twitter"
                     >
                       <Twitter size={20} />
@@ -52,7 +52,7 @@ export default async function AboutPage() {
                       href={teacherInfo.socialLinks.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-primary-yellow text-white p-3 rounded-full hover:bg-primary-yellow/90 transition-colors"
+                      className="bg-primary text-white p-3 rounded-full hover:bg-primary/90 transition-colors"
                       aria-label="LinkedIn"
                     >
                       <Linkedin size={20} />
@@ -61,7 +61,7 @@ export default async function AboutPage() {
                   {teacherInfo.socialLinks.email && (
                     <a
                       href={`mailto:${teacherInfo.socialLinks.email}`}
-                      className="bg-primary-yellow text-white p-3 rounded-full hover:bg-primary-yellow/90 transition-colors"
+                      className="bg-primary text-white p-3 rounded-full hover:bg-primary/90 transition-colors"
                       aria-label="Email"
                     >
                       <Mail size={20} />
@@ -79,11 +79,7 @@ export default async function AboutPage() {
                     priority
                   /> */}
                 </div>
-                <div className="absolute bottom-6 right-6 bg-white p-3 rounded-xl shadow-lg">
-                  <span className="text-primary-yellow font-bold">
-                    {getExperienceYears()}+ Years Experience
-                  </span>
-                </div>
+                <ExperienceBadge />
               </div>
             </div>
           </div>
@@ -93,12 +89,18 @@ export default async function AboutPage() {
         <section className="">
           <div className="max-w-4xl mx-auto">
             {/* About Ms. Jane */}
-            <div className="bg-white rounded-2xl p-8 md:p-10 shadow-sm mb-8">
-              <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 border-b border-primary-blue/50 pb-4">
-                About Ms. Jane
-              </h2>
+            <div className="p-8 md:p-10  mb-8 bg-radial from-primary-light/30 to-white rounded-full">
+              <div className="flex items-center justify-center flex-col">
+                <h2 className="text-3xl font-bold text-center text-font-primary title">
+                  About Ms. Jane
+                </h2>
+                <p className="subtitle mb-4 text-center text-primary-dark/80 italic text-sm">
+                  [ Discover the passionate educator behind Growing Minds Kindergarten ]
+                </p>
+              </div>
+              <hr className="border-primary-light/50 mb-4" />
               <div className="prose prose-lg prose-yellow mx-auto">
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-font-primary leading-relaxed">
                   With over a decade of experience in early childhood education, I&apos;ve dedicated
                   my career to creating nurturing, stimulating environments where young children can
                   thrive. I hold a Master&apos;s degree in Early Childhood Education from State
@@ -107,47 +109,10 @@ export default async function AboutPage() {
               </div>
             </div>
 
-            {/* My Teaching Philosophy */}
-            <div className="bg-light-blue rounded-2xl p-8 md:p-10 shadow-sm mb-8">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="bg-primary-yellow p-3 rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-white"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-                    />
-                  </svg>
-                </div>
-                <h2 className="text-2xl font-bold text-gray-800">My Teaching Philosophy</h2>
-              </div>
-              <div className="prose prose-lg prose-yellow mx-auto">
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  I believe that every child is naturally curious and capable. My role as an
-                  educator is to provide the right environment, materials, and guidance to help them
-                  explore, question, and discover. I emphasize learning through play, as I&apos;ve
-                  seen firsthand how play-based learning leads to deeper understanding and
-                  retention.
-                </p>
-                <p className="text-gray-700 leading-relaxed">
-                  In my classroom, we focus on developing the whole child—not just academic skills,
-                  but social, emotional, physical, and creative abilities as well. I believe in
-                  creating a community of learners where children feel safe, respected, and valued.
-                </p>
-              </div>
-            </div>
-
             {/* Professional Experience */}
-            <div className="bg-light-blue/20 rounded-2xl p-8 md:p-10 shadow-sm mb-8">
+            <Card className="rounded-2xl p-8 md:p-10 mb-8">
               <div className="flex items-center gap-3 mb-6">
-                <div className="bg-primary-blue p-3 rounded-full">
+                <div className="bg-primary-dark p-3 rounded-full">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6 text-white"
@@ -163,19 +128,26 @@ export default async function AboutPage() {
                     />
                   </svg>
                 </div>
-                <h2 className="text-2xl font-bold text-gray-800">Professional Experience</h2>
+                <h2 className="text-2xl font-bold text-font-primary title">
+                  Professional Experience
+                </h2>
               </div>
+              <p className="subtitle mb-4">
+                A journey through my career in early childhood education.
+              </p>
 
               <div className="space-y-6">
                 {/* Timeline items */}
-                <div className="relative pl-8 border-l-2 border-primary-blue/30">
-                  <div className="absolute left-[-8px] top-0 w-3.5 h-3.5 bg-primary-blue rounded-full"></div>
+                <div className="relative pl-8 border-l-2 border-primary-dark/30">
+                  <div className="absolute left-[-8px] top-0 w-3.5 h-3.5 bg-primary-dark rounded-full"></div>
                   <div className="bg-white rounded-lg p-5 shadow-sm">
-                    <h3 className="font-bold text-lg text-gray-800">Lead Kindergarten Teacher</h3>
-                    <p className="text-primary-blue font-medium">
+                    <h3 className="font-bold text-lg text-font-primary title">
+                      Lead Kindergarten Teacher
+                    </h3>
+                    <p className="text-primary-dark font-medium">
                       Sunshine Elementary (2015-Present)
                     </p>
-                    <p className="mt-2 text-gray-600">
+                    <p className="mt-2 text-font-primary/80">
                       Developing and implementing curriculum for kindergarten students,
                       collaborating with parents and staff, and creating a positive learning
                       environment.
@@ -183,28 +155,30 @@ export default async function AboutPage() {
                   </div>
                 </div>
 
-                <div className="relative pl-8 border-l-2 border-primary-blue/30">
-                  <div className="absolute left-[-8px] top-0 w-3.5 h-3.5 bg-primary-blue rounded-full"></div>
+                <div className="relative pl-8 border-l-2 border-primary-dark/30">
+                  <div className="absolute left-[-8px] top-0 w-3.5 h-3.5 bg-primary-dark rounded-full"></div>
                   <div className="bg-white rounded-lg p-5 shadow-sm">
-                    <h3 className="font-bold text-lg text-gray-800">Early Childhood Educator</h3>
-                    <p className="text-primary-blue font-medium">
+                    <h3 className="font-bold text-lg text-font-primary title">
+                      Early Childhood Educator
+                    </h3>
+                    <p className="text-primary-dark font-medium">
                       Little Learners Preschool (2012-2015)
                     </p>
-                    <p className="mt-2 text-gray-600">
+                    <p className="mt-2 text-font-primary/80">
                       Assisted in classroom management, developed age-appropriate activities, and
                       supported children&apos;s social and emotional development.
                     </p>
                   </div>
                 </div>
 
-                <div className="relative pl-8 border-l-2 border-primary-blue/30">
-                  <div className="absolute left-[-8px] top-0 w-3.5 h-3.5 bg-primary-blue rounded-full"></div>
+                <div className="relative pl-8 border-l-2 border-primary-dark/30">
+                  <div className="absolute left-[-8px] top-0 w-3.5 h-3.5 bg-primary-dark rounded-full"></div>
                   <div className="bg-white rounded-lg p-5 shadow-sm">
-                    <h3 className="font-bold text-lg text-gray-800">Student Teacher</h3>
-                    <p className="text-primary-blue font-medium">
+                    <h3 className="font-bold text-lg text-font-primary title">Student Teacher</h3>
+                    <p className="text-primary-dark font-medium">
                       Bright Beginnings Academy (2010-2012)
                     </p>
-                    <p className="mt-2 text-gray-600">
+                    <p className="mt-2 text-font-primary/80">
                       Gained practical classroom experience under the guidance of experienced
                       teachers, developed lesson plans, and participated in parent-teacher
                       conferences.
@@ -212,12 +186,54 @@ export default async function AboutPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Card>
+
+            {/* My Teaching Philosophy */}
+            <Card className="rounded-2xl p-8 md:p-10 mb-8 bg-primary-light/20">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="bg-primary p-3 rounded-full">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                    />
+                  </svg>
+                </div>
+                <h2 className="text-2xl font-bold text-font-primary title">
+                  My Teaching Philosophy
+                </h2>
+              </div>
+              <p className="subtitle mb-4">
+                The core beliefs that guide my approach to early childhood education.
+              </p>
+              <div className="prose prose-lg prose-yellow mx-auto">
+                <p className="text-font-primary/80leading-relaxed mb-4">
+                  I believe that every child is naturally curious and capable. My role as an
+                  educator is to provide the right environment, materials, and guidance to help them
+                  explore, question, and discover. I emphasize learning through play, as I&apos;ve
+                  seen firsthand how play-based learning leads to deeper understanding and
+                  retention.
+                </p>
+                <p className="text-font-primary/80leading-relaxed">
+                  In my classroom, we focus on developing the whole child—not just academic skills,
+                  but social, emotional, physical, and creative abilities as well. I believe in
+                  creating a community of learners where children feel safe, respected, and valued.
+                </p>
+              </div>
+            </Card>
 
             {/* Education and Certifications */}
-            <div className="bg-white rounded-2xl p-8 md:p-10 shadow-sm">
+            <Card className="rounded-2xl p-8 md:p-10">
               <div className="flex items-center gap-3 mb-6">
-                <div className="bg-primary-yellow p-3 rounded-full">
+                <div className="bg-primary p-3 rounded-full">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6 text-white"
@@ -235,77 +251,45 @@ export default async function AboutPage() {
                     />
                   </svg>
                 </div>
-                <h2 className="text-2xl font-bold text-gray-800">Education and Certifications</h2>
+                <h2 className="text-2xl font-bold text-font-primary title">
+                  Education and Certifications
+                </h2>
               </div>
+              <p className="subtitle mb-4">
+                My academic background and professional qualifications.
+              </p>
 
               <div className="grid md:grid-cols-2 gap-6">
                 {/* {teacherInfo.education.map((item, index) => (
-                  <div key={index} className="bg-light-yellow/10 rounded-lg p-5 border-l-4 border-primary-yellow">
-                    <p className="font-medium text-gray-800">{item}</p>
+                  <div key={index} className="bg-light-yellow/10 rounded-lg p-5 border-l-4 border-primary">
+                    <p className="font-medium text-font-primary">{item}</p>
                   </div>
                 ))} */}
               </div>
 
-              <div className="mt-8 p-6 bg-light-blue/10 rounded-lg border border-dashed border-primary-blue/30">
-                <h3 className="font-bold text-lg text-gray-800 mb-3">Additional Skills</h3>
+              <div className="mt-8 p-6 bg-primary-light/10 rounded-lg border border-dashed border-primary-dark/30">
+                <h3 className="font-bold text-lg text-font-primary mb-3 title">
+                  Additional Skills
+                </h3>
                 <div className="flex flex-wrap gap-2">
-                  <span className="bg-primary-blue/20 text-primary-blue px-3 py-1 rounded-full text-sm">
+                  <span className="bg-primary-dark/20 text-primary-dark px-3 py-1 rounded-full text-sm">
                     First Aid and CPR Certified
                   </span>
-                  <span className="bg-primary-blue/20 text-primary-blue px-3 py-1 rounded-full text-sm">
+                  <span className="bg-primary-dark/20 text-primary-dark px-3 py-1 rounded-full text-sm">
                     Child Development
                   </span>
-                  <span className="bg-primary-blue/20 text-primary-blue px-3 py-1 rounded-full text-sm">
+                  <span className="bg-primary-dark/20 text-primary-dark px-3 py-1 rounded-full text-sm">
                     Curriculum Design
                   </span>
-                  <span className="bg-primary-blue/20 text-primary-blue px-3 py-1 rounded-full text-sm">
+                  <span className="bg-primary-dark/20 text-primary-dark px-3 py-1 rounded-full text-sm">
                     Classroom Management
                   </span>
-                  <span className="bg-primary-blue/20 text-primary-blue px-3 py-1 rounded-full text-sm">
+                  <span className="bg-primary-dark/20 text-primary-dark px-3 py-1 rounded-full text-sm">
                     Parent Communication
                   </span>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Education & Experience */}
-        <section className="container-custom">
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-2xl p-8 shadow-sm">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="bg-light-yellow p-3 rounded-full">
-                  <GraduationCap className="h-6 w-6 text-primary-yellow" />
-                </div>
-                <h2 className="text-2xl font-bold">Education</h2>
-              </div>
-              <ul className="space-y-4">
-                {/* {teacherInfo.education.map((item, index) => (
-                  <li key={index} className="flex gap-3">
-                    <div className="flex-shrink-0 w-2 h-2 bg-primary-yellow rounded-full mt-3"></div>
-                    <p>{item}</p>
-                  </li>
-                ))} */}
-              </ul>
-            </div>
-
-            <div className="bg-white rounded-2xl p-8 shadow-sm">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="bg-light-yellow p-3 rounded-full">
-                  <Briefcase className="h-6 w-6 text-primary-yellow" />
-                </div>
-                <h2 className="text-2xl font-bold">Experience</h2>
-              </div>
-              <ul className="space-y-4">
-                {/* {teacherInfo.experience.map((item, index) => (
-                  <li key={index} className="flex gap-3">
-                    <div className="flex-shrink-0 w-2 h-2 bg-primary-yellow rounded-full mt-3"></div>
-                    <p>{item}</p>
-                  </li>
-                ))} */}
-              </ul>
-            </div>
+            </Card>
           </div>
         </section>
       </div>

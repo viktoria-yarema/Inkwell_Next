@@ -57,14 +57,14 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   return (
     <>
       <article className="pb-16 container-custom">
-        <div className="bg-light-primary-yellow/30">
+        <div className="bg-light-primary/30">
           <div className="">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-3xl md:text-5xl font-bold mb-4">{article.title}</h1>
-              <div className="flex w-fit mx-auto bg-primary-yellow/90 text-white text-sm font-medium px-4 py-1 rounded-full">
+              <div className="flex w-fit mx-auto bg-primary/90 text-white text-sm font-medium px-4 py-1 rounded-full">
                 {article.tags.map(tagId => tags.find(tag => tag.id === tagId)?.title).join(", ")}
               </div>
-              <div className="flex items-center justify-center gap-2 text-gray-600 mb-6">
+              <div className="flex items-center justify-center gap-2 text-font-primary/80 mb-6">
                 <time dateTime={article.publishedAt.toString()}>
                   {formatDate(article.publishedAt.toString())}
                 </time>
@@ -98,7 +98,10 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       {/* TODO: Related Articles */}
       {/* <section className="container-custom pb-16">
         <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold">Related Articles</h2>
+          <h2 className="text-2xl md:text-3xl font-bold title">Related Articles</h2>
+          <p className="subtitle">
+            Discover more articles that might interest you.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

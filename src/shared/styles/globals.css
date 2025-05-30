@@ -3,71 +3,25 @@
 
 @layer base {
   :root {
-    --primary-yellow: #ff930f;
-    --light-yellow: hsl(48, 100%, 88%);
-    --primary-blue: #8ab9f1;
-    --light-blue: #dcecff;
-    --soft-grey: hsl(220, 20%, 97%);
+    --primary: #8ab9f1;
+    --primary-light: #cde4ff;
+    --primary-dark: #4c82c2;
 
-    --background: #fff;
-    --foreground: hsl(224, 71%, 4%);
+    --font-primary: #003b81;
+    --font-secondary: var(--screen);
 
-    --card: hsl(0, 0%, 100%);
-    --card-foreground: hsl(224, 71%, 4%);
+    --screen: #f8fbff;
 
-    --popover: hsl(0, 0%, 100%);
-    --popover-foreground: hsl(224, 71%, 4%);
-
-    --primary: var(--primary-yellow);
-    --primary-foreground: hsl(210, 40%, 98%);
-
-    --secondary: var(--primary-blue);
-    --secondary-foreground: hsl(222.2, 47.4%, 11.2%);
-
-    --muted: var(--soft-grey);
-    --muted-foreground: hsl(215.4, 16.3%, 46.9%);
-
-    --accent: var(--light-yellow);
-    --accent-foreground: hsl(222.2, 47.4%, 11.2%);
-
+    --card: #fff;
+    --popover: var(--card);
+    --accent: var(--primary);
     --destructive: hsl(0, 84.2%, 60.2%);
-    --destructive-foreground: hsl(210, 40%, 98%);
 
-    --border: hsl(214.3, 31.8%, 91.4%);
-    --input: hsl(214.3, 31.8%, 91.4%);
-    --ring: hsl(222.2, 84%, 4.9%);
+    --border: var(--primary-light);
+    --input: var(--card);
+    --ring: var(--primary);
 
     --radius: 1rem;
-  }
-
-  .dark {
-    --background: hsl(222.2, 84%, 4.9%);
-    --foreground: hsl(210, 40%, 98%);
-
-    --card: hsl(222.2, 84%, 4.9%);
-    --card-foreground: hsl(210, 40%, 98%);
-
-    --popover: hsl(222.2, 84%, 4.9%);
-    --popover-foreground: hsl(210, 40%, 98%);
-
-    --primary: var(--primary-yellow);
-    --primary-foreground: hsl(222.2, 47.4%, 11.2%);
-
-    --secondary: var(--primary-blue);
-    --secondary-foreground: hsl(210, 40%, 98%);
-
-    --muted: hsl(217.2, 32.6%, 17.5%);
-    --muted-foreground: hsl(215, 20.2%, 65.1%);
-
-    --accent: var(--light-yellow);
-    --accent-foreground: hsl(210, 40%, 98%);
-
-    --destructive: hsl(0, 62.8%, 30.6%);
-    --destructive-foreground: hsl(210, 40%, 98%);
-
-    --border: hsl(217.2, 32.6%, 17.5%);
-    --input: hsl(217.2, 32.6%, 17.5%);
-    --ring: hsl(212.7, 26.8%, 83.9%);
   }
 
   * {
@@ -104,7 +58,7 @@
   }
 
   .btn-primary {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6 py-3 font-medium transition-colors;
+    @apply bg-primary text-center text-font-secondary hover:bg-primary-dark rounded-full px-6 py-3 font-medium transition-all duration-300 hover:scale-105 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30;
   }
 
   .btn-secondary {
@@ -113,6 +67,14 @@
 
   .card-hover {
     @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .title {
+    @apply text-4xl md:text-5xl font-bold mb-4 leading-tight uppercase text-primary-dark;
+  }
+
+  .subtitle {
+    @apply text-font-primary/80 text-base md:text-lg leading-relaxed max-w-2xl mx-auto;
   }
 
   @keyframes appear {

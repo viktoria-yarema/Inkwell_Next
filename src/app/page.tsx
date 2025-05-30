@@ -3,9 +3,9 @@ import { getTags } from "@/entities/tags/api/getTags";
 import { getUser } from "@/entities/user/api/getUser";
 import ArticleCard from "@/shared/components/ArticleCard";
 import CategoryCard from "@/shared/components/CaregoryCard";
+import ExperienceBadge from "@/shared/components/ExperienceBadge";
 import Hero from "@/shared/components/Layout/Hero";
 import { ABOUT_PATH, ARTICLES_PATH } from "@/shared/routes/paths";
-import getExperienceYears from "@/shared/utils/getExperienceYears";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,15 +23,13 @@ export default async function Home() {
     getTags(),
   ]);
 
-  const experienceYears = getExperienceYears();
-
   return (
     <div className="flex flex-col gap-16 md:gap-24 pb-16">
       <Hero />
       <section className="container-custom">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Latest Articles</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 title">Latest Articles</h2>
+          <p className="subtitle">
             Discover the latest teaching resources, activities, and insights for kindergarten
             education.
           </p>
@@ -44,14 +42,14 @@ export default async function Home() {
         </div>
 
         <div className="text-center mt-10">
-          <Link href={ARTICLES_PATH} className="btn-secondary inline-block">
+          <Link href={ARTICLES_PATH} className="btn-primary inline-block">
             View All Articles
           </Link>
         </div>
       </section>
 
       {/* About Teacher Section */}
-      <section className="bg-light-blue/30 py-16">
+      <section className="py-16">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="relative">
@@ -65,15 +63,14 @@ export default async function Home() {
                   />
                 )}
               </div>
-              <div className="absolute bottom-6 right-6 bg-white p-3 rounded-xl shadow-lg">
-                <span className="text-primary-yellow font-bold">
-                  {experienceYears}+ Years Experience
-                </span>
-              </div>
+              <ExperienceBadge />
             </div>
 
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">About the Teacher</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 title">About the Teacher</h2>
+              <p className="subtitle text-left mb-6">
+                Meet the passionate educator behind Growing Minds Kindergarten.
+              </p>
               <Link href={ABOUT_PATH} className="btn-primary inline-block">
                 Learn More
               </Link>
@@ -85,8 +82,8 @@ export default async function Home() {
       {/* Educational Focus Section */}
       <section className="container-custom">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Educational Focus</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 title">Educational Focus</h2>
+          <p className="subtitle">
             Explore different areas of early childhood education through these categories.
           </p>
         </div>

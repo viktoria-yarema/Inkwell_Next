@@ -1,5 +1,5 @@
-import { navLinks } from '@/shared/constants/navLinks';
-import Link from 'next/link';
+import { navLinks } from "@/shared/constants/navLinks";
+import Link from "next/link";
 
 const DesktopNavigation = () => {
   return (
@@ -8,7 +8,7 @@ const DesktopNavigation = () => {
         <Link
           key={link.label}
           href={link.href}
-          className="font-medium text-gray-700 hover:text-primary-yellow transition-colors"
+          className="font-medium text-primary-dark hover:text-primary transition-colors"
         >
           {link.label}
         </Link>

@@ -31,7 +31,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
           {activeCategory ? `${activeCategory} Articles` : "All Articles"}
         </h1>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <p className="subtitle">
           {activeCategory
             ? `Browse our collection of articles about ${activeCategory.toLowerCase()}.`
             : "Browse our collection of articles on early childhood education, activities, and resources."}
@@ -43,8 +43,8 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
             href={ARTICLES_PATH}
             className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
               !category
-                ? "bg-primary-yellow text-white"
-                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                ? "bg-primary text-font-secondary"
+                : "bg-primary-light/20 text-font-primary hover:bg-primary-light/30"
             }`}
           >
             All
@@ -57,8 +57,8 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                 href={`${ARTICLES_PATH}?category=${cat.id}`}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors flex items-center gap-1 ${
                   category === cat.id
-                    ? "bg-primary-yellow text-white"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    ? "bg-primary text-font-secondary"
+                    : "bg-primary-light/20 text-font-primary hover:bg-primary-light/30"
                 }`}
               >
                 {Icon && <Icon className="w-3.5 h-3.5" />}
@@ -77,7 +77,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
       ) : (
         <div className="text-center py-12">
           <h3 className="text-xl font-medium mb-2">No articles found</h3>
-          <p className="text-gray-600">
+          <p className="text-font-primary/80">
             No articles found in this category. Please try another category or check back later.
           </p>
         </div>

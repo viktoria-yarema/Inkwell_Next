@@ -1,41 +1,42 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
-  --color-primary-yellow: var(--primary-yellow);
-  --color-light-yellow: var(--light-yellow);
-  --color-primary-blue: var(--primary-blue);
-  --color-light-blue: var(--light-blue);
-  --color-soft-grey: var(--soft-grey);
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
 
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-font-primary: var(--font-primary);
+  --color-font-secondary: var(--font-secondary);
+  --color-screen: var(--screen);
+
+  --color-background: var(--screen);
+  --color-foreground: var(--font-primary);
 
   --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
+  --color-card-foreground: var(--font-primary);
 
   --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
+  --color-popover-foreground: var(--font-primary);
 
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-foreground: white;
 
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--card);
+  --color-secondary-foreground: var(--font-primary);
 
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--card);
+  --color-muted-foreground: var(--font-secondary);
 
   --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-foreground: white;
 
   --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-foreground: white;
 
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --radius: 1rem;
+  --radius: var(--radius);
 
   --animation-appear: appear;
   --animation-disappear: disappear;
