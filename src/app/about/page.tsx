@@ -94,9 +94,6 @@ export default async function AboutPage() {
                 <h2 className="text-3xl font-bold text-center text-font-primary title">
                   About Ms. Jane
                 </h2>
-                <p className="subtitle mb-4 text-center text-primary-dark/80 italic text-sm">
-                  [ Discover the passionate educator behind Growing Minds Kindergarten ]
-                </p>
               </div>
               <hr className="border-primary-light/50 mb-4" />
               <div className="prose prose-lg prose-yellow mx-auto">
@@ -132,9 +129,6 @@ export default async function AboutPage() {
                   Professional Experience
                 </h2>
               </div>
-              <p className="subtitle mb-4">
-                A journey through my career in early childhood education.
-              </p>
 
               <div className="space-y-6">
                 {/* Timeline items */}
@@ -211,9 +205,6 @@ export default async function AboutPage() {
                   My Teaching Philosophy
                 </h2>
               </div>
-              <p className="subtitle mb-4">
-                The core beliefs that guide my approach to early childhood education.
-              </p>
               <div className="prose prose-lg prose-yellow mx-auto">
                 <p className="text-font-primary/80leading-relaxed mb-4">
                   I believe that every child is naturally curious and capable. My role as an
@@ -255,9 +246,6 @@ export default async function AboutPage() {
                   Education and Certifications
                 </h2>
               </div>
-              <p className="subtitle mb-4">
-                My academic background and professional qualifications.
-              </p>
 
               <div className="grid md:grid-cols-2 gap-6">
                 {/* {teacherInfo.education.map((item, index) => (

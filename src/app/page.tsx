@@ -24,7 +24,7 @@ export default async function Home() {
   ]);
 
   return (
-    <div className="flex flex-col gap-16 md:gap-24 py-12">
+    <>
       <Hero />
       <section className="container-custom">
         <div className="text-center mb-12">
@@ -94,6 +94,6 @@ export default async function Home() {
           ))}
         </div>
       </section>
-    </div>
+    </>
   );
 }
