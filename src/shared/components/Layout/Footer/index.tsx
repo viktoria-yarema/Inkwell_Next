@@ -18,7 +18,7 @@ export default async function Footer() {
           <div>
             <Logo
               logoClassName="brightness-100 contrast-100 mix-blend-multiply"
-              textClassName="text-font-primary"
+              textClassName="text-font-primary/80"
             />
             <p className="text-font-primary/80 mb-4">
               A kindergarten teacher&lsquo;s blog sharing early childhood education insights,
@@ -45,7 +45,7 @@ export default async function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+            <h3 className="text-xl font-bold text-font-primary/80 mb-4">Quick Links</h3>
             <nav className="flex flex-col gap-2">
               {navLinks.map(link => (
                 <Link
@@ -66,7 +66,7 @@ export default async function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-4">Categories</h3>
+            <h3 className="text-xl font-bold mb-4 text-font-primary/80">Categories</h3>
             <nav className="flex flex-col gap-2">
               {tags.map(tag => (
                 <Link
