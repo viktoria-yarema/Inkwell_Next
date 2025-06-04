@@ -41,13 +41,13 @@ const MobileMenu = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 100 }}
             transition={{ duration: 0.2, delay: 0, ease: "easeIn" }}
-            className="bg-primary-dark/80 py-4 h-full pl-6 pr-2 backdrop-blur-sm backdrop-saturate-[100%]"
+            className="bg-primary/90 py-4 h-full pl-6 pr-2 backdrop-blur-md backdrop-saturate-[100%]"
           >
             <DialogHeader className="flex justify-between items-center flex-row mb-4">
               <DialogTitle></DialogTitle>
               <DialogClose asChild>
                 <button className="focus:outline-none rounded-full h-10 w-10 flex items-center justify-center">
-                  <X size={28} className="text-primary-light" />
+                  <X size={28} className="text-white" />
                 </button>
               </DialogClose>
             </DialogHeader>
@@ -56,10 +56,10 @@ const MobileMenu = () => {
                 <DialogClose asChild key={link.label}>
                   <Link
                     href={link.href}
-                    className={cn(
-                      "font-bold text-xl uppercase transition-colors py-2",
-                      isActive(link.href) ? "text-white" : "text-primary-light hover:text-white"
-                    )}
+                    className={cn("font-bold text-xl uppercase transition-colors py-2", {
+                      "text-white text-2xl": isActive(link.href),
+                      "text-primary-light hover:text-white": !isActive(link.href),
+                    })}
                     aria-current={isActive(link.href) ? "page" : undefined}
                   >
                     {link.label}
