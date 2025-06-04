@@ -15,4 +15,6 @@ const fetchArticles = async (query: GetArticlesQuery): Promise<GetArticlesData> 
   return { ...response, items: response.articles?.map(article => formatArticle(article)) };
 };
 
-export const getArticles = unstable_cache(fetchArticles, ["articles"], { revalidate: false });
+export const getArticles = unstable_cache(fetchArticles, ["articles"], {
+  revalidate: 60 * 60 * 24,
+});

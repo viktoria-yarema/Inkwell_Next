@@ -9,5 +9,5 @@ const fetchArticleById = async (id: string): Promise<Article> => {
 };
 
 export const getArticleById = unstable_cache(fetchArticleById, ["article-by-id"], {
-  revalidate: false,
+  revalidate: 1000 * 60 * 60 * 24,
 });

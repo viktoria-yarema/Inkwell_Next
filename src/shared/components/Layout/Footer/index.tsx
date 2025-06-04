@@ -3,6 +3,7 @@ import { navLinks } from "@/shared/constants/navLinks";
 import { ARTICLES_PATH, PRIVACY_PATH } from "@/shared/routes/paths";
 import { Facebook, Mail } from "lucide-react";
 import Link from "next/link";
+import { Logo } from "../../Logo";
 
 export default async function Footer() {
   const tags = await getTags();
@@ -15,7 +16,10 @@ export default async function Footer() {
       <div className="px-4 md:px-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">Growing Minds</h3>
+            <Logo
+              logoClassName="brightness-100 contrast-100 mix-blend-multiply"
+              textClassName="text-font-primary"
+            />
             <p className="text-font-primary/80 mb-4">
               A kindergarten teacher&lsquo;s blog sharing early childhood education insights,
               activities, and resources.
