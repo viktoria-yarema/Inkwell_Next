@@ -1,8 +1,10 @@
-import { User } from '../type';
-import { apiRequest } from '@/shared/api/instance';
+import { apiRequest } from "@/shared/api/instance";
+import { unstable_cache } from "next/cache";
+import { User } from "../type";
 
-export const getUser = async (): Promise<User> => {
+const fetchUser = async (): Promise<User> => {
   const response = await apiRequest<User>(`/user`);
-
   return response;
 };
+
+export const getUser = unstable_cache(fetchUser, ["user"], { revalidate: false });

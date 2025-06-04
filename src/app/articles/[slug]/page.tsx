@@ -53,9 +53,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   return (
     <>
-      <article className="pb-16 container-custom flex flex-col gap-10">
+      <article className="pb-16 container-custom flex flex-col gap-4 md:gap-6 lg:gap-8">
         <div className="bg-light-primary/30">
-          <div className="max-w-3xl flex items-center justify-center flex-col gap-2 mb-10">
+          <div className="max-w-3xl flex items-center justify-center flex-col gap-2 mb-10 mx-auto">
             <h1 className="text-3xl md:text-5xl font-bold mb-4">{article.title}</h1>
             <div className="flex gap-2 items-center">
               <div className="flex w-fit h-fit bg-primary/90 text-white text-sm font-medium px-4 py-1 rounded-full">
