@@ -60,7 +60,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en" suppressHydrationWarning>
       <body className={`${nunito.variable} font-nunito min-h-screen flex flex-col`}>
         <Header />
-        <main className="flex-grow flex flex-col md:gap-16 lg:gap-24 py-18 md:py-24 gap-10">
+        <main className="flex-grow flex flex-col md:gap-16 lg:gap-24 py-14 md:py-24 gap-10">
           {children}
         </main>
         <Footer />

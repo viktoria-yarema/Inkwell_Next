@@ -25,7 +25,7 @@ const Hero = () => {
             </Link>
           </div>
           <div className="order-1 md:order-2 relative">
-            <div className="relative h-[300px] md:h-[400px] w-full">
+            <div className="relative h-[336px] md:h-[400px] w-full">
               <Image
                 src={HeroImage}
                 alt="Kindergarten classroom with children engaged in learning activities"
