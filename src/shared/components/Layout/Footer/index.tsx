@@ -9,8 +9,6 @@ export default async function Footer() {
   const tags = await getTags();
   const currentYear = new Date().getFullYear();
 
-  console.log(tags, "tags");
-
   return (
     <footer className="bg-primary/90 pt-12 pb-6 text-font-primary">
       <div className="px-4 md:px-12 max-w-7xl mx-auto">
