@@ -12,7 +12,7 @@ export default async function Footer() {
   console.log(tags, "tags");
 
   return (
-    <footer className="bg-primary-dark/70 pt-12 pb-6 text-font-primary">
+    <footer className="bg-primary/90 pt-12 pb-6 text-font-primary">
       <div className="px-4 md:px-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>

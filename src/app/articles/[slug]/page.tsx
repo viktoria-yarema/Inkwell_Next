@@ -55,7 +55,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   return (
     <>
-      <article className="pb-16 container-custom flex flex-col gap-4 md:gap-6 lg:gap-8">
+      <article className="pb-16 pt-6 container-custom flex flex-col gap-4 md:gap-6 lg:gap-8">
         <div className="bg-light-primary/30 flex flex-col gap-6">
           <BackButton />
           <div className="max-w-3xl flex items-center justify-center flex-col gap-2 mx-auto">
@@ -80,7 +80,6 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             </div>
           </div>
         </div>
-        <hr />
         <div className="max-w-3xl mx-auto">
           <div className="prose prose-lg prose-yellow mx-auto">
             <RichTextRenderer delta={JSON.parse(JSON.stringify(article.content))} />

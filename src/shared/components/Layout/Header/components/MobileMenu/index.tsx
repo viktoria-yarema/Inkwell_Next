@@ -35,13 +35,13 @@ const MobileMenu = () => {
             <Menu size={24} className="block text-primary-dark" />
           </button>
         </DialogTrigger>
-        <DialogContent className="fixed top-0 left-0 w-screen h-screen p-0 bg-transparent flex flex-col">
+        <DialogContent className="fixed max-w-full top-0 left-0 w-full h-screen p-0 bg-transparent flex flex-col">
           <m.div
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 100 }}
             transition={{ duration: 0.2, delay: 0, ease: "easeIn" }}
-            className="bg-primary/90 py-4 h-full pl-6 pr-2 backdrop-blur-md backdrop-saturate-[100%]"
+            className="bg-primary/90  py-4 h-full pl-6 pr-2 backdrop-blur-md backdrop-saturate-[100%]"
           >
             <DialogHeader className="flex justify-between items-center flex-row mb-4">
               <DialogTitle></DialogTitle>
