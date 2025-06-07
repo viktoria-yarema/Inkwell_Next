@@ -14,12 +14,18 @@ export const BackButton = () => {
   return (
     <button
       onClick={() => router.back()}
-      className={cn("text-primary cursor-pointer flex lg:hidden", {
-        "animate-disappear": !isArticlePath,
-        "animate-appear": isArticlePath,
-      })}
+      role="link"
+      aria-label="Back"
+      className={cn(
+        "text-primary cursor-pointer h-10 self-start py-1 pr-4 items-center justify-between flex rounded-full md:hidden",
+        {
+          "animate-disappear": !isArticlePath,
+          "animate-appear": isArticlePath,
+        }
+      )}
     >
-      <ChevronLeft />
+      <ChevronLeft size={20} />
+      <p className="text-base text-font-medium">Go Back</p>
     </button>
   );
 };
