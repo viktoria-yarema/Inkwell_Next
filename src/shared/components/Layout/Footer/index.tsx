@@ -27,14 +27,14 @@ export default async function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-font-primary/80 hover:text-primary transition-colors"
+                className="text-font-primary/80 hover:text-font-primary/60  transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook size={20} />
               </a>
               <a
                 href="mailto:contact@growingminds.edu"
-                className="text-font-primary/80 hover:text-primary transition-colors"
+                className="text-font-primary/80 hover:text-font-primary/60  transition-colors"
                 aria-label="Email"
               >
                 <Mail size={20} />
@@ -49,14 +49,14 @@ export default async function Footer() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="text-font-primary/80 hover:text-primary transition-colors"
+                  className="text-font-primary/80 hover:text-font-primary/60  transition-colors"
                 >
                   {link.label}
                 </Link>
               ))}
               <Link
                 href={PRIVACY_PATH}
-                className="text-font-primary/80 hover:text-primary transition-colors"
+                className="text-font-primary/80 hover:text-font-primary/60  transition-colors"
               >
                 Privacy Policy
               </Link>
@@ -70,7 +70,7 @@ export default async function Footer() {
                 <Link
                   key={tag.id}
                   href={`${ARTICLES_PATH}?category=${tag.id}`}
-                  className="text-font-primary/80 hover:text-primary transition-colors"
+                  className="text-font-primary/80 hover:text-font-primary/60  transition-colors"
                 >
                   {tag.title}
                 </Link>

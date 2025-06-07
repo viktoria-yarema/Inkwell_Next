@@ -8,7 +8,7 @@ const DesktopNavigation = () => {
         <Link
           key={link.label}
           href={link.href}
-          className="font-medium text-primary-dark hover:text-primary transition-colors"
+          className="font-medium text-primary-dark hover:text-font-primary/60  transition-colors"
         >
           {link.label}
         </Link>
