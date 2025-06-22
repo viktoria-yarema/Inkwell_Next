@@ -59,7 +59,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         <div className="bg-light-primary/30 flex flex-col gap-6">
           <BackButton />
           <div className="max-w-3xl flex items-center justify-center flex-col gap-2 mx-auto">
-            <h1 className="text-3xl md:text-5xl font-bold mb-4">{article.title}</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 text-primary-dark">
+              {article.title}
+            </h1>
             <div className="flex gap-2 items-center flex-wrap justify-center">
               <div className="flex w-fit h-fit bg-primary/90 text-xs text-white font-medium px-4 py-1 rounded-full">
                 {article.tags.map(tagId => tags.find(tag => tag.id === tagId)?.title).join(", ")}

@@ -2,7 +2,7 @@ import { getArticles } from "@/entities/articles/api/getArticles";
 import { getTags } from "@/entities/tags/api/getTags";
 import { getUser } from "@/entities/user/api/getUser";
 import ArticleCard from "@/shared/components/ArticleCard";
-import CategoryCard from "@/shared/components/CaregoryCard";
+import CategoryCard from "@/shared/components/CategoryCard";
 import ExperienceBadge from "@/shared/components/ExperienceBadge";
 import Hero from "@/shared/components/Layout/Hero";
 import { ABOUT_PATH, ARTICLES_PATH } from "@/shared/routes/paths";
