@@ -54,9 +54,9 @@ export default async function Home() {
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="relative">
               <div className="relative h-[300px] md:h-[400px] w-full">
-                {user.avatarUrl && (
+                {user?.avatarUrl && (
                   <Image
-                    src={user.avatarUrl}
+                    src={user?.avatarUrl}
                     alt={user?.firstName ?? "teacher"}
                     fill
                     className="object-cover rounded-2xl"

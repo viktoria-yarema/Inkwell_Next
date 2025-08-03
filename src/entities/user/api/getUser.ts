@@ -7,4 +7,4 @@ const fetchUser = async (): Promise<User> => {
   return response;
 };
 
-export const getUser = unstable_cache(fetchUser, ["user"], { revalidate: false });
+export const getUser = unstable_cache(fetchUser, ["user"], { revalidate: 1 });
