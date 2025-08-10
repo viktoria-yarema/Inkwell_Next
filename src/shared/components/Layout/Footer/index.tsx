@@ -1,11 +1,19 @@
 import { getTags } from "@/entities/tags/api/getTags";
 import { navLinks } from "@/shared/constants/navLinks";
 import { ARTICLES_PATH, PRIVACY_PATH } from "@/shared/routes/paths";
+import { getImageUrl } from "@/shared/utils/getImage";
 import { Facebook, Mail } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
-import { Logo } from "../../Logo";
+import { FC } from "react";
 
-export default async function Footer() {
+type FooterProps = {
+  logoUrl: string;
+  brandName: string;
+  description: string;
+};
+
+const Footer: FC<FooterProps> = async ({ logoUrl, brandName, description }) => {
   const tags = await getTags();
   const currentYear = new Date().getFullYear();
 
@@ -14,14 +22,16 @@ export default async function Footer() {
       <div className="px-4 md:px-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
-            <Logo
-              logoClassName="brightness-100 contrast-100 mix-blend-multiply"
-              textClassName="text-font-primary/80"
-            />
-            <p className="text-font-primary/80 mb-4">
-              A kindergarten teacher&lsquo;s blog sharing early childhood education insights,
-              activities, and resources.
-            </p>
+            <div className="flex items-center gap-2">
+              <Image
+                src={getImageUrl(`/page-content/${logoUrl}`)}
+                alt={brandName}
+                width={48}
+                height={48}
+              />
+              <p className="font-bold text-xl uppercase text-primary-dark">{brandName}</p>
+            </div>
+            <p className="text-font-primary/80 mb-4">{description}</p>
             <div className="flex gap-4">
               <a
                 href="https://facebook.com"
@@ -80,9 +90,11 @@ export default async function Footer() {
         </div>
 
         <div className="border-t border-font-primary/20 pt-6 text-center text-font-primary/80 text-sm">
-          <p>&copy; {currentYear} Growing Minds Kindergarten. All rights reserved.</p>
+          <p>&copy; {currentYear}. All rights reserved.</p>
         </div>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

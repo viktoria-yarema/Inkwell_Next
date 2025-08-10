@@ -1,6 +1,7 @@
 import { getArticles } from "@/entities/articles/api/getArticles";
 import { getTags } from "@/entities/tags/api/getTags";
 import { getUser } from "@/entities/user/api/getUser";
+import { PageContentVariants } from "@/entities/user/type";
 import ArticleCard from "@/shared/components/ArticleCard";
 import CategoryCard from "@/shared/components/CategoryCard";
 import ExperienceBadge from "@/shared/components/ExperienceBadge";
@@ -9,6 +10,8 @@ import { ABOUT_PATH, ARTICLES_PATH } from "@/shared/routes/paths";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Growing Minds Kindergarten - Exploring and Growing Together",
@@ -23,16 +26,22 @@ export default async function Home() {
     getTags(),
   ]);
 
+  const { pageContent } = user;
+  const {
+    hero,
+    latestArticles,
+    categories: categoriesData,
+  } = pageContent[PageContentVariants.HOME];
+
+  const { intro } = pageContent[PageContentVariants.ABOUT];
+
   return (
     <>
-      <Hero />
+      <Hero title={hero.title} description={hero.subtitle} image={hero.imageUrl} />
       <section className="container-custom">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 title">Latest Articles</h2>
-          <p className="subtitle">
-            Discover the latest teaching resources, activities, and insights for kindergarten
-            education.
-          </p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 title">{latestArticles.title}</h2>
+          <p className="subtitle">{latestArticles.subtitle}</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -49,7 +58,7 @@ export default async function Home() {
       </section>
 
       {/* About Teacher Section */}
-      <section className="">
+      <section>
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="relative">
@@ -67,10 +76,8 @@ export default async function Home() {
             </div>
 
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 title">About the Teacher</h2>
-              <p className="subtitle text-left mb-6">
-                Meet the passionate educator behind Growing Minds Kindergarten.
-              </p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 title">{intro.title}</h2>
+              <p className="subtitle text-left mb-6 line-clamp-2">{intro.content}</p>
               <Link href={ABOUT_PATH} className="btn-primary inline-block">
                 Learn More
               </Link>
@@ -82,10 +89,8 @@ export default async function Home() {
       {/* Educational Focus Section */}
       <section className="container-custom">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 title">Educational Focus</h2>
-          <p className="subtitle">
-            Explore different areas of early childhood education through these categories.
-          </p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 title">{categoriesData.title}</h2>
+          <p className="subtitle">{categoriesData.subtitle}</p>
         </div>
 
         <div className="flex flex-wrap gap-6 justify-center mx-auto">

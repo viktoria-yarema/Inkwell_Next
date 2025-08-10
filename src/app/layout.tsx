@@ -1,3 +1,5 @@
+import { getUser } from "@/entities/user/api/getUser";
+import { PageContentVariants } from "@/entities/user/type";
 import Footer from "@/shared/components/Layout/Footer";
 import Header from "@/shared/components/Layout/Header";
 import type { Metadata } from "next";
@@ -56,14 +58,23 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const user = await getUser();
+
+  const { pageContent } = user;
+  const { header, footer } = pageContent[PageContentVariants.HOME];
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${nunito.variable} font-nunito min-h-screen flex flex-col`}>
-        <Header />
-        <main className="flex-grow flex flex-col md:gap-16 lg:gap-24 py-14 md:py-24 gap-10">
+        <Header logoUrl={header.logoUrl} brandName={header.brandName} />
+        <main className="flex-grow flex flex-col max-w-[1360px] mx-auto md:gap-16 lg:gap-24 py-14 md:py-24 gap-10">
           {children}
         </main>
-        <Footer />
+        <Footer
+          logoUrl={header.logoUrl}
+          brandName={header.brandName}
+          description={footer.description}
+        />
       </body>
     </html>
   );

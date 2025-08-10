@@ -10,7 +10,7 @@ export const navLinks = [
     href: ARTICLES_PATH,
   },
   {
-    label: 'About Teacher',
+    label: 'About',
     href: ABOUT_PATH,
   },
 ];
