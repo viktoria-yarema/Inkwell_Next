@@ -3,7 +3,7 @@ import { generateToken } from "../utils/generateJWT";
 
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL as string;
 
-export const apiRequest = async <T>(url: string): Promise<any> => {
+export const apiRequest = async <T = unknown>(url: string): Promise<T> => {
   const token = generateToken();
   setCookie("token", token);
 
@@ -15,9 +15,9 @@ export const apiRequest = async <T>(url: string): Promise<any> => {
         Authorization: `Bearer ${token}`,
       },
     });
-    return response.json();
+    return response.json() as T;
   } catch (error) {
     console.log(error, "error");
-    return null;
+    return null as T;
   }
 };
