@@ -1,5 +1,12 @@
 import { z } from "zod";
 import {
+  categoriesSchema,
+  footerSchema,
+  headerSchema,
+  heroSchema,
+  latestArticlesSchema,
+} from "./validators/home";
+import {
   educationSchema,
   introSchema,
   philosophySchema,
@@ -7,13 +14,6 @@ import {
   skillsSchema,
 } from "./validators/about";
 import { articlesSchema } from "./validators/articles";
-import {
-  categoriesSchema,
-  footerSchema,
-  headerSchema,
-  heroSchema,
-  latestArticlesSchema,
-} from "./validators/home";
 
 export enum PageContentVariants {
   HOME = "home",
@@ -93,3 +93,15 @@ export type User = {
 export type UpdateUser = Partial<
   Pick<User, "firstName" | "lastName" | "phoneNumber" | "email">
 >;
+
+export type UploadPageContentImageRequest = {
+  file: File;
+  pageVariant: PageContentVariants;
+  section: string;
+};
+
+export type UpdatePageContentRequest = {
+  pageVariant: PageContentVariants;
+  section: string;
+  content: unknown;
+};
