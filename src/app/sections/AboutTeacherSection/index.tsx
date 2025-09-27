@@ -1,5 +1,6 @@
 import { getUser } from "@/entities/user/api/getUser";
 import ExperienceBadge from "@/shared/components/ExperienceBadge";
+import SocialMediaLinks from "@/shared/components/SocialMediaLinks";
 import { ABOUT_PATH } from "@/shared/routes/paths";
 import Image from "next/image";
 import Link from "next/link";
@@ -33,6 +34,9 @@ export default async function AboutTeacherSection({ title, content }: AboutTeach
           <div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4 title">{title}</h2>
             <p className="subtitle text-left mb-6 line-clamp-2">{content}</p>
+            <div className="mb-6">
+              <SocialMediaLinks socialMedia={user?.socialMedia || []} />
+            </div>
             <Link href={ABOUT_PATH} className="btn-primary inline-block">
               Learn More
             </Link>

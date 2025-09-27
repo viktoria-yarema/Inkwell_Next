@@ -78,6 +78,11 @@ export type PageContent = {
   [PageContentVariants.ABOUT]: AboutPageContent;
 };
 
+export type SocialMediaLink = {
+  id: string;
+  link: string;
+};
+
 export type User = {
   id: string;
   firstName: string;
@@ -88,6 +93,7 @@ export type User = {
   updatedAt: Date;
   avatarUrl?: string;
   pageContent: PageContent;
+  socialMedia: SocialMediaLink[];
 };
 
 export type UpdateUser = Partial<
