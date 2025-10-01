@@ -2,8 +2,8 @@ import { TAG_ICONS } from "@/entities/tags/constants";
 import type { Tag } from "@/entities/tags/type";
 import { BookOpen } from "lucide-react";
 import Link from "next/link";
-import { ARTICLES_PATH } from "../routes/paths";
-import { Card } from "./ui/card";
+import { ARTICLES_PATH } from "../../routes/paths";
+import { Card } from "../ui/card";
 
 type CategoryCardProps = {
   category: Tag;

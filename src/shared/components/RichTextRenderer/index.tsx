@@ -1,8 +1,8 @@
-'use client';
-import { useMemo } from 'react';
-import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
-import createDOMPurify from 'isomorphic-dompurify';
-import he from 'he';
+"use client";
+import he from "he";
+import createDOMPurify from "isomorphic-dompurify";
+import { QuillDeltaToHtmlConverter } from "quill-delta-to-html";
+import { useMemo } from "react";
 
 interface RichTextRendererProps {
   delta: string;
@@ -13,7 +13,7 @@ export function parseDeltaString(raw: string) {
   try {
     return JSON.parse(decoded);
   } catch (e) {
-    console.error('Failed to JSON.parse decoded Delta:', decoded);
+    console.error("Failed to JSON.parse decoded Delta:", decoded);
     throw e;
   }
 }
@@ -26,7 +26,7 @@ export default function RichTextRenderer({ delta }: RichTextRendererProps) {
 
     const rawHtml = converter.convert();
 
-    const DOMPurify = createDOMPurify(typeof window === 'undefined' ? undefined : window);
+    const DOMPurify = createDOMPurify(typeof window === "undefined" ? undefined : window);
 
     return DOMPurify.sanitize(rawHtml);
   }, [delta]);

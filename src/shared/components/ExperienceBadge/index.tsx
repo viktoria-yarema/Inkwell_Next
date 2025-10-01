@@ -20,9 +20,7 @@ const ExperienceBadge = ({ className, years, variant = "floating" }: ExperienceB
   return (
     <div className={cn(baseClasses, className)}>
       <span className="text-primary-dark font-bold text-sm md:text-base flex items-center gap-1">
-        <span className="text-primary font-bold text-lg md:text-xl">
-          {experienceYears}+
-        </span>
+        <span className="text-primary font-bold text-lg md:text-xl">{experienceYears}+</span>
         <span>Years Experience</span>
       </span>
     </div>

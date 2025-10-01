@@ -4,10 +4,10 @@ import { Tag } from "@/entities/tags/type";
 import { MoveUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ARTICLE_PATH } from "../routes/paths";
-import { cn } from "../utils/cn";
-import { formatDate } from "../utils/utils";
-import { Card } from "./ui/card";
+import { ARTICLE_PATH } from "../../routes/paths";
+import { cn } from "../../utils/cn";
+import { formatDate } from "../../utils/utils";
+import { Card } from "../ui/card";
 
 type ArticleCardProps = {
   article: Article;
@@ -48,9 +48,7 @@ export default function ArticleCard({ article, featured = false, tags }: Article
               </time>
             </div>
 
-            <h3 className={`font-bold text-primary transition-colors text-3xl`}>
-              {article.title}
-            </h3>
+            <h3 className={`font-bold text-primary transition-colors text-3xl`}>{article.title}</h3>
           </div>
           <div className="flex items-center justify-center gap-2 rounded-full h-12 w-12 border border-primary p-2">
             <MoveUpRight size={28} className="text-primary" />
